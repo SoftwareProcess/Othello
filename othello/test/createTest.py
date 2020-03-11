@@ -54,7 +54,7 @@ class CreateTest(TestCase):
         dark = 5
         blank = 0
         errorDict = {'status':'error: Above bound light integer'}
-        actual = create(light, dark)
+        actual = create(light, dark, blank)
         expected = errorDict
         self.assertEqual(actual, expected)
         
@@ -64,7 +64,7 @@ class CreateTest(TestCase):
         dark = 5
         blank = 0
         errorDict = {'status':'error: Below bound light integer'}
-        actual = create(light, dark)
+        actual = create(light, dark, blank)
         expected = errorDict
         self.assertEqual(actual, expected)
         
@@ -73,7 +73,7 @@ class CreateTest(TestCase):
         dark = 5
         blank = 0
         errorDict = {'status':'error: Non integer light'}
-        actual = create(light, dark)
+        actual = create(light, dark, blank)
         expected = errorDict
         self.assertEqual(actual, expected)
         
@@ -82,7 +82,7 @@ class CreateTest(TestCase):
         dark = 5
         blank = 0
         errorDict = {'status':'error: Null light'}
-        actual = create(light, dark)
+        actual = create(light, dark, blank)
         expected = errorDict
         self.assertEqual(actual, expected)
     
@@ -91,7 +91,7 @@ class CreateTest(TestCase):
         dark = 10
         blank = 0
         errorDict = {'status':'error: Above bound dark integer'}
-        actual = create(light, dark)
+        actual = create(light, dark, blank)
         expected = errorDict
         self.assertEqual(actual, expected)
     
@@ -100,7 +100,7 @@ class CreateTest(TestCase):
         dark = -1
         blank = 0
         errorDict = {'status':'error: Below bound dark integer'}
-        actual = create(light, dark)
+        actual = create(light, dark, blank)
         expected = errorDict
         self.assertEqual(actual, expected)
         
@@ -109,7 +109,7 @@ class CreateTest(TestCase):
         dark = 'd'
         blank = 0
         errorDict = {'status':'error: Non integer dark'}
-        actual = create(light, dark)
+        actual = create(light, dark, blank)
         expected = errorDict
         self.assertEqual(actual, expected)
     
@@ -118,7 +118,7 @@ class CreateTest(TestCase):
         dark = None
         blank = 0
         errorDict = {'status':'error: Null dark'}
-        actual = create(light, dark)
+        actual = create(light, dark, blank)
         expected = errorDict
         self.assertEqual(actual, expected)
         
