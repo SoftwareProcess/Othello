@@ -229,6 +229,16 @@ class CreateTest(TestCase):
         actual = create(light, dark, blank, size)
         expected = errorDict
         self.assertEqual(actual, expected)
+
+    def test942_BlankEqualsDark(self):
+        light = 1
+        dark = 2
+        blank = 2
+        size = 8
+        errorDict = {'status':'error: Blank equals dark value'}
+        actual = create(light, dark, blank, size)
+        expected = errorDict
+        self.assertEqual(actual, expected)
         
         
         
