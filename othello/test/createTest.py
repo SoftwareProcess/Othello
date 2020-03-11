@@ -139,6 +139,15 @@ class CreateTest(TestCase):
         actual = create(light, dark, blank)
         expected = errorDict
         self.assertEqual(actual, expected)
+        
+    def test922_BelowBoundBlank(self):
+        light = 5
+        dark = 6
+        blank = 'b'
+        errorDict = {'status':'error: Non integer blank'}
+        actual = create(light, dark, blank)
+        expected = errorDict
+        self.assertEqual(actual, expected)
     
         
         
