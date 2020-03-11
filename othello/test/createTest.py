@@ -200,7 +200,15 @@ class CreateTest(TestCase):
         expected = errorDict
         self.assertEqual(actual, expected)
 
-        
+    def test933_NullSize(self):
+        light = 1
+        dark = 2
+        blank = 0
+        size = None
+        errorDict = {'status':'error: Null size'}
+        actual = create(light, dark, blank, size)
+        expected = errorDict
+        self.assertEqual(actual, expected)
     
         
         
