@@ -44,4 +44,6 @@ def _create(light, dark, blank, size):
         result = {'status':'error: Dark equals light value'}
     elif (blank == light):
         result = {'status':'error: Blank equals light value'}
+    elif (blank == dark):
+        result = {'status':'error: Blank equals dark value'}
     return result
