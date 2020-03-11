@@ -1,3 +1,3 @@
-def _create(parms):
-    result = {'create': 'create stub'}
+def _create(light):
+    result = {'status': 'error: Above bound light integer'}
     return result
