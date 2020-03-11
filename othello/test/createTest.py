@@ -215,7 +215,7 @@ class CreateTest(TestCase):
         dark = 5
         blank = 0
         size = 8
-        errorDict = {'status':'error: Null size'}
+        errorDict = {'status':'error: Dark equals light value'}
         actual = create(light, dark, blank, size)
         expected = errorDict
         self.assertEqual(actual, expected)

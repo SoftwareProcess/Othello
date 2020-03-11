@@ -39,4 +39,7 @@ def _create(light, dark, blank, size):
     elif (size < 6):
         result = {'status':'error: Below bound size integer'}
     
+    # Checking if values are equal
+    if (light == dark):
+        result = {'status':'error: Dark equals light value'}
     return result
