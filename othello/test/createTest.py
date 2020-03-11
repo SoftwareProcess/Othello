@@ -97,6 +97,15 @@ class CreateTest(TestCase):
         actual = create(light, dark)
         expected = errorDict
         self.assertEqual(actual, expected)
+        
+    def test912_NonIntegerDark(self):
+        light = 5
+        dark = 'd'
+        errorDict = {'status':'error: Non integer dark'}
+        actual = create(light, dark)
+        expected = errorDict
+        self.assertEqual(actual, expected)
+        
     
     
         
