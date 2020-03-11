@@ -51,37 +51,42 @@ class CreateTest(TestCase):
     #900 Sad Path
     def test900_AboveBoundLight(self):
         light = 10
+        dark = 5
         errorDict = {'status':'error: Above bound light integer'}
-        actual = create(light)
+        actual = create(light, dark)
         expected = errorDict
         self.assertEqual(actual, expected)
         
     
     def test901_BelowBoundLight(self):
         light = -1
+        dark = 5
         errorDict = {'status':'error: Below bound light integer'}
-        actual = create(light)
+        actual = create(light, dark)
         expected = errorDict
         self.assertEqual(actual, expected)
         
     def test902_NonIntegerLight(self):
         light = 'w'
+        dark = 5
         errorDict = {'status':'error: Non integer light'}
-        actual = create(light)
+        actual = create(light, dark)
         expected = errorDict
         self.assertEqual(actual, expected)
         
     def test903_NullLight(self):
         light = None
+        dark = 5
         errorDict = {'status':'error: Null light'}
-        actual = create(light)
+        actual = create(light, dark)
         expected = errorDict
         self.assertEqual(actual, expected)
     
     def test910_AboveBoundDark(self):
+        light = 5
         dark = 10
         errorDict = {'status':'error: Above bound dark integer'}
-        actual = create(dark)
+        actual = create(light, dark)
         expected = errorDict
         self.assertEqual(actual, expected)
         
