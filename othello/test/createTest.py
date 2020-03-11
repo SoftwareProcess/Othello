@@ -56,3 +56,11 @@ class CreateTest(TestCase):
         expected = errorDict
         self.assertEqual(actual, expected)
         
+    
+    def test901_BelowBoundLight(self):
+        light = -1
+        errorDict = {'status':'error: Below bound light integer'}
+        actual = create(light)
+        expected = errorDict
+        self.assertEqual(actual, expected)
+        
