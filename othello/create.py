@@ -32,4 +32,6 @@ def _create(light, dark, blank, size):
     # Checking boundary for size
     if (size > 16):
         result = {'status':'error: Above bound size integer'}
+    elif (size < 6):
+        result = {'status':'error: Below bound size integer'}
     return result
