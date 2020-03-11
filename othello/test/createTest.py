@@ -150,7 +150,7 @@ class CreateTest(TestCase):
         expected = errorDict
         self.assertEqual(actual, expected)
         
-    def test922_BelowBoundBlank(self):
+    def test922_NonIntegerBlank(self):
         light = 1
         dark = 2
         blank = 'b'
