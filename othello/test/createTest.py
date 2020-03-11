@@ -77,5 +77,13 @@ class CreateTest(TestCase):
         actual = create(light)
         expected = errorDict
         self.assertEqual(actual, expected)
+    
+    def test910_AboveBoundDark(self):
+        dark = 10
+        errorDict = {'status':'error: Above bound dark integer'}
+        actual = create(dark)
+        expected = errorDict
+        self.assertEqual(actual, expected)
+        
         
         
