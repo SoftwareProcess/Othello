@@ -1,4 +1,4 @@
-def _create(light, dark, blank):
+def _create(light, dark, blank, size):
     # Checking boundary for light
     if (isinstance(light, str)):
         result = {'status':'error: Non integer light'}
@@ -28,4 +28,8 @@ def _create(light, dark, blank):
         result = {'status':'error: Above bound blank integer'}
     elif (blank < 0):
         result = {'status':'error: Below bound blank integer'}
+    
+    # Checking boundary for size
+    if (size > 16):
+        result = {'status':'error: Above bound size integer'}
     return result

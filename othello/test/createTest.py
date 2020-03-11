@@ -53,6 +53,7 @@ class CreateTest(TestCase):
         light = 10
         dark = 5
         blank = 0
+        size = 8
         errorDict = {'status':'error: Above bound light integer'}
         actual = create(light, dark, blank)
         expected = errorDict
@@ -63,6 +64,7 @@ class CreateTest(TestCase):
         light = -1
         dark = 5
         blank = 0
+        size = 8
         errorDict = {'status':'error: Below bound light integer'}
         actual = create(light, dark, blank)
         expected = errorDict
@@ -72,6 +74,7 @@ class CreateTest(TestCase):
         light = 'w'
         dark = 5
         blank = 0
+        size = 8
         errorDict = {'status':'error: Non integer light'}
         actual = create(light, dark, blank)
         expected = errorDict
@@ -81,6 +84,7 @@ class CreateTest(TestCase):
         light = None
         dark = 5
         blank = 0
+        size = 8
         errorDict = {'status':'error: Null light'}
         actual = create(light, dark, blank)
         expected = errorDict
@@ -90,6 +94,7 @@ class CreateTest(TestCase):
         light = 5
         dark = 10
         blank = 0
+        size = 8
         errorDict = {'status':'error: Above bound dark integer'}
         actual = create(light, dark, blank)
         expected = errorDict
@@ -99,6 +104,7 @@ class CreateTest(TestCase):
         light = 5
         dark = -1
         blank = 0
+        size = 8
         errorDict = {'status':'error: Below bound dark integer'}
         actual = create(light, dark, blank)
         expected = errorDict
@@ -108,6 +114,7 @@ class CreateTest(TestCase):
         light = 5
         dark = 'd'
         blank = 0
+        size = 8
         errorDict = {'status':'error: Non integer dark'}
         actual = create(light, dark, blank)
         expected = errorDict
@@ -117,6 +124,7 @@ class CreateTest(TestCase):
         light = 5
         dark = None
         blank = 0
+        size = 8
         errorDict = {'status':'error: Null dark'}
         actual = create(light, dark, blank)
         expected = errorDict
@@ -126,6 +134,7 @@ class CreateTest(TestCase):
         light = 5
         dark = 6
         blank = 10
+        size = 8
         errorDict = {'status':'error: Above bound blank integer'}
         actual = create(light, dark, blank)
         expected = errorDict
@@ -135,6 +144,7 @@ class CreateTest(TestCase):
         light = 5
         dark = 6
         blank = -1
+        size = 8
         errorDict = {'status':'error: Below bound blank integer'}
         actual = create(light, dark, blank)
         expected = errorDict
@@ -144,6 +154,7 @@ class CreateTest(TestCase):
         light = 5
         dark = 6
         blank = 'b'
+        size = 8
         errorDict = {'status':'error: Non integer blank'}
         actual = create(light, dark, blank)
         expected = errorDict
@@ -153,6 +164,7 @@ class CreateTest(TestCase):
         light = 5
         dark = 6
         blank = None
+        size = 8
         errorDict = {'status':'error: Null blank'}
         actual = create(light, dark, blank)
         expected = errorDict
@@ -163,7 +175,7 @@ class CreateTest(TestCase):
         dark = 6
         blank = 0
         size = 17
-        errorDict = {'status':'error: Null blank'}
+        errorDict = {'status':'error: Above bound size integer'}
         actual = create(light, dark, blank)
         expected = errorDict
         self.assertEqual(actual, expected)
