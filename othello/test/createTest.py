@@ -180,7 +180,7 @@ class CreateTest(TestCase):
         expected = errorDict
         self.assertEqual(actual, expected)
 
-    def test931_AboveBoundSize(self):
+    def test931_BelowBoundSize(self):
         light = 1
         dark = 2
         blank = 0
