@@ -32,6 +32,8 @@ def _create(light, dark, blank, size):
     # Checking boundary for size
     if (isinstance(size, float)):
         result = {'status':'error: Non integer size'}
+    elif (size == None):
+        result = {'status':'error: Null size'}
     elif (size > 16):
         result = {'status':'error: Above bound size integer'}
     elif (size < 6):
