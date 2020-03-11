@@ -20,7 +20,9 @@ def _create(light, dark, blank):
         result = {'status':'error: Below bound dark integer'}
     
     # Checking boundary for blank
-    if (blank > 9):
+    if (isinstance(blank, str)):
+        result = {'status':'error: Non integer blank'}
+    elif (blank > 9):
         result = {'status':'error: Above bound blank integer'}
     elif (blank < 0):
         result = {'status':'error: Below bound blank integer'}
