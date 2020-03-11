@@ -52,6 +52,7 @@ class CreateTest(TestCase):
     def test900_AboveBoundLight(self):
         light = 10
         dark = 5
+        blank = 0
         errorDict = {'status':'error: Above bound light integer'}
         actual = create(light, dark)
         expected = errorDict
@@ -61,6 +62,7 @@ class CreateTest(TestCase):
     def test901_BelowBoundLight(self):
         light = -1
         dark = 5
+        blank = 0
         errorDict = {'status':'error: Below bound light integer'}
         actual = create(light, dark)
         expected = errorDict
@@ -69,6 +71,7 @@ class CreateTest(TestCase):
     def test902_NonIntegerLight(self):
         light = 'w'
         dark = 5
+        blank = 0
         errorDict = {'status':'error: Non integer light'}
         actual = create(light, dark)
         expected = errorDict
@@ -77,6 +80,7 @@ class CreateTest(TestCase):
     def test903_NullLight(self):
         light = None
         dark = 5
+        blank = 0
         errorDict = {'status':'error: Null light'}
         actual = create(light, dark)
         expected = errorDict
@@ -85,6 +89,7 @@ class CreateTest(TestCase):
     def test910_AboveBoundDark(self):
         light = 5
         dark = 10
+        blank = 0
         errorDict = {'status':'error: Above bound dark integer'}
         actual = create(light, dark)
         expected = errorDict
@@ -93,6 +98,7 @@ class CreateTest(TestCase):
     def test911_BelowBoundDark(self):
         light = 5
         dark = -1
+        blank = 0
         errorDict = {'status':'error: Below bound dark integer'}
         actual = create(light, dark)
         expected = errorDict
@@ -101,6 +107,7 @@ class CreateTest(TestCase):
     def test912_NonIntegerDark(self):
         light = 5
         dark = 'd'
+        blank = 0
         errorDict = {'status':'error: Non integer dark'}
         actual = create(light, dark)
         expected = errorDict
@@ -109,6 +116,7 @@ class CreateTest(TestCase):
     def test913_NullDark(self):
         light = 5
         dark = None
+        blank = 0
         errorDict = {'status':'error: Null dark'}
         actual = create(light, dark)
         expected = errorDict
