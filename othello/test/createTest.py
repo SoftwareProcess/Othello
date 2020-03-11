@@ -51,7 +51,7 @@ class CreateTest(TestCase):
     #900 Sad Path
     def test900_AboveBoundLight(self):
         light = 10
-        dark = 5
+        dark = 2
         blank = 0
         size = 8
         errorDict = {'status':'error: Above bound light integer'}
@@ -62,7 +62,7 @@ class CreateTest(TestCase):
     
     def test901_BelowBoundLight(self):
         light = -1
-        dark = 5
+        dark = 2
         blank = 0
         size = 8
         errorDict = {'status':'error: Below bound light integer'}
@@ -72,7 +72,7 @@ class CreateTest(TestCase):
         
     def test902_NonIntegerLight(self):
         light = 'w'
-        dark = 5
+        dark = 2
         blank = 0
         size = 8
         errorDict = {'status':'error: Non integer light'}
@@ -82,7 +82,7 @@ class CreateTest(TestCase):
         
     def test903_NullLight(self):
         light = None
-        dark = 5
+        dark = 2
         blank = 0
         size = 8
         errorDict = {'status':'error: Null light'}
@@ -91,7 +91,7 @@ class CreateTest(TestCase):
         self.assertEqual(actual, expected)
     
     def test910_AboveBoundDark(self):
-        light = 5
+        light = 1
         dark = 10
         blank = 0
         size = 8
@@ -101,7 +101,7 @@ class CreateTest(TestCase):
         self.assertEqual(actual, expected)
     
     def test911_BelowBoundDark(self):
-        light = 5
+        light = 1
         dark = -1
         blank = 0
         size = 8
@@ -111,7 +111,7 @@ class CreateTest(TestCase):
         self.assertEqual(actual, expected)
         
     def test912_NonIntegerDark(self):
-        light = 5
+        light = 1
         dark = 'd'
         blank = 0
         size = 8
@@ -121,7 +121,7 @@ class CreateTest(TestCase):
         self.assertEqual(actual, expected)
     
     def test913_NullDark(self):
-        light = 5
+        light = 1
         dark = None
         blank = 0
         size = 8
@@ -131,8 +131,8 @@ class CreateTest(TestCase):
         self.assertEqual(actual, expected)
         
     def test920_AboveBoundBlank(self):
-        light = 5
-        dark = 6
+        light = 1
+        dark = 2
         blank = 10
         size = 8
         errorDict = {'status':'error: Above bound blank integer'}
@@ -141,8 +141,8 @@ class CreateTest(TestCase):
         self.assertEqual(actual, expected)
     
     def test921_BelowBoundBlank(self):
-        light = 5
-        dark = 6
+        light = 1
+        dark = 2
         blank = -1
         size = 8
         errorDict = {'status':'error: Below bound blank integer'}
@@ -151,8 +151,8 @@ class CreateTest(TestCase):
         self.assertEqual(actual, expected)
         
     def test922_BelowBoundBlank(self):
-        light = 5
-        dark = 6
+        light = 1
+        dark = 2
         blank = 'b'
         size = 8
         errorDict = {'status':'error: Non integer blank'}
@@ -161,8 +161,8 @@ class CreateTest(TestCase):
         self.assertEqual(actual, expected)
     
     def test923_NullBlank(self):
-        light = 5
-        dark = 6
+        light = 1
+        dark = 2
         blank = None
         size = 8
         errorDict = {'status':'error: Null blank'}
@@ -171,8 +171,8 @@ class CreateTest(TestCase):
         self.assertEqual(actual, expected)
         
     def test930_AboveBoundSize(self):
-        light = 5
-        dark = 6
+        light = 1
+        dark = 2
         blank = 0
         size = 17
         errorDict = {'status':'error: Above bound size integer'}
