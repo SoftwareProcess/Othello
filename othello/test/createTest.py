@@ -114,6 +114,14 @@ class CreateTest(TestCase):
         expected = errorDict
         self.assertEqual(actual, expected)
         
+    def test920_AboveBoundBlank(self):
+        light = 5
+        dark = 6
+        blank = 10
+        errorDict = {'status':'error: Above bound blank integer'}
+        actual = create(light, dark, blank)
+        expected = errorDict
+        self.assertEqual(actual, expected)
     
     
         
