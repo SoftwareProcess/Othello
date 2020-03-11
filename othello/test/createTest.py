@@ -55,7 +55,7 @@ class CreateTest(TestCase):
         blank = 0
         size = 8
         errorDict = {'status':'error: Above bound light integer'}
-        actual = create(light, dark, blank)
+        actual = create(light, dark, blank, size)
         expected = errorDict
         self.assertEqual(actual, expected)
         
@@ -66,7 +66,7 @@ class CreateTest(TestCase):
         blank = 0
         size = 8
         errorDict = {'status':'error: Below bound light integer'}
-        actual = create(light, dark, blank)
+        actual = create(light, dark, blank, size)
         expected = errorDict
         self.assertEqual(actual, expected)
         
@@ -76,7 +76,7 @@ class CreateTest(TestCase):
         blank = 0
         size = 8
         errorDict = {'status':'error: Non integer light'}
-        actual = create(light, dark, blank)
+        actual = create(light, dark, blank, size)
         expected = errorDict
         self.assertEqual(actual, expected)
         
@@ -86,7 +86,7 @@ class CreateTest(TestCase):
         blank = 0
         size = 8
         errorDict = {'status':'error: Null light'}
-        actual = create(light, dark, blank)
+        actual = create(light, dark, blank, size)
         expected = errorDict
         self.assertEqual(actual, expected)
     
@@ -96,7 +96,7 @@ class CreateTest(TestCase):
         blank = 0
         size = 8
         errorDict = {'status':'error: Above bound dark integer'}
-        actual = create(light, dark, blank)
+        actual = create(light, dark, blank, size)
         expected = errorDict
         self.assertEqual(actual, expected)
     
@@ -106,7 +106,7 @@ class CreateTest(TestCase):
         blank = 0
         size = 8
         errorDict = {'status':'error: Below bound dark integer'}
-        actual = create(light, dark, blank)
+        actual = create(light, dark, blank, size)
         expected = errorDict
         self.assertEqual(actual, expected)
         
@@ -116,7 +116,7 @@ class CreateTest(TestCase):
         blank = 0
         size = 8
         errorDict = {'status':'error: Non integer dark'}
-        actual = create(light, dark, blank)
+        actual = create(light, dark, blank, size)
         expected = errorDict
         self.assertEqual(actual, expected)
     
@@ -126,7 +126,7 @@ class CreateTest(TestCase):
         blank = 0
         size = 8
         errorDict = {'status':'error: Null dark'}
-        actual = create(light, dark, blank)
+        actual = create(light, dark, blank, size)
         expected = errorDict
         self.assertEqual(actual, expected)
         
@@ -136,7 +136,7 @@ class CreateTest(TestCase):
         blank = 10
         size = 8
         errorDict = {'status':'error: Above bound blank integer'}
-        actual = create(light, dark, blank)
+        actual = create(light, dark, blank, size)
         expected = errorDict
         self.assertEqual(actual, expected)
     
@@ -146,7 +146,7 @@ class CreateTest(TestCase):
         blank = -1
         size = 8
         errorDict = {'status':'error: Below bound blank integer'}
-        actual = create(light, dark, blank)
+        actual = create(light, dark, blank, size)
         expected = errorDict
         self.assertEqual(actual, expected)
         
@@ -156,7 +156,7 @@ class CreateTest(TestCase):
         blank = 'b'
         size = 8
         errorDict = {'status':'error: Non integer blank'}
-        actual = create(light, dark, blank)
+        actual = create(light, dark, blank, size)
         expected = errorDict
         self.assertEqual(actual, expected)
     
@@ -166,7 +166,7 @@ class CreateTest(TestCase):
         blank = None
         size = 8
         errorDict = {'status':'error: Null blank'}
-        actual = create(light, dark, blank)
+        actual = create(light, dark, blank, size)
         expected = errorDict
         self.assertEqual(actual, expected)
         
@@ -176,7 +176,7 @@ class CreateTest(TestCase):
         blank = 0
         size = 17
         errorDict = {'status':'error: Above bound size integer'}
-        actual = create(light, dark, blank)
+        actual = create(light, dark, blank, size)
         expected = errorDict
         self.assertEqual(actual, expected)
     
