@@ -1,4 +1,4 @@
-def _create(light = None):
+def _create(light):
     if (isinstance(light, str)):
         result = {'status':'error: Non integer light'}
     elif (light == None):
