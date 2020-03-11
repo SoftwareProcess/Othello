@@ -30,7 +30,9 @@ def _create(light, dark, blank, size):
         result = {'status':'error: Below bound blank integer'}
     
     # Checking boundary for size
-    if (size > 16):
+    if (isinstance(size, float)):
+        result = {'status':'error: Non integer size'}
+    elif (size > 16):
         result = {'status':'error: Above bound size integer'}
     elif (size < 6):
         result = {'status':'error: Below bound size integer'}
