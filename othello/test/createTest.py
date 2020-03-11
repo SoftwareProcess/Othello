@@ -190,6 +190,16 @@ class CreateTest(TestCase):
         expected = errorDict
         self.assertEqual(actual, expected)
         
+    def test932_AboveBoundSize(self):
+        light = 1
+        dark = 2
+        blank = 0
+        size = 1.2
+        errorDict = {'status':'error: Non integer size'}
+        actual = create(light, dark, blank, size)
+        expected = errorDict
+        self.assertEqual(actual, expected)
+        
     
         
         
