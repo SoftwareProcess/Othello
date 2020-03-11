@@ -105,6 +105,14 @@ class CreateTest(TestCase):
         actual = create(light, dark)
         expected = errorDict
         self.assertEqual(actual, expected)
+    
+    def test913_NullDark(self):
+        light = 5
+        dark = None
+        errorDict = {'status':'error: Null dark'}
+        actual = create(light, dark)
+        expected = errorDict
+        self.assertEqual(actual, expected)
         
     
     
