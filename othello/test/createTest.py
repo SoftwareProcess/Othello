@@ -64,3 +64,10 @@ class CreateTest(TestCase):
         expected = errorDict
         self.assertEqual(actual, expected)
         
+    def test902_NonIntegerLight(self):
+        light = 'w'
+        errorDict = {'status':'error: Non integer light'}
+        actual = create(light)
+        expected = errorDict
+        self.assertEqual(actual, expected)
+        
