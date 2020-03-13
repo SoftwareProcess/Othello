@@ -34,9 +34,9 @@ def _create(parms):
         return {'status': 'error: below bound blank value'}
     
     # size sad path boundary check
-    if (int(parms['size']) > 9):
+    if (int(parms['size']) > 16):
         return {'status': 'error: above bound size value'}
-    elif (int(parms['size']) < 5):
+    elif (int(parms['size']) < 6):
         return {'status': 'error: below bound size value'}
     
     return result
