@@ -48,5 +48,5 @@ def _create(parms):
     if (int(parms['light']) == int(parms['dark'])):
         return {'status': 'error: Light is equal to dark value'}
     if (int(parms['light']) == int(parms['blank'])):
-        return {'status': 'error: Light is equal to blank value'}
+        return {'status': 'error: blank is equal to light value'}
     return result
