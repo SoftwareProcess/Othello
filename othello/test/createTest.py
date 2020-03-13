@@ -190,6 +190,15 @@ class CreateTest(TestCase):
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
         
+    def test934_OddSize(self):
+        self.setUp()
+        self.parms['size'] = 9
+        expected = 'error: Odd size value'
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
+    
+        
     def test940_LightEqualsDark(self):
         self.setUp()
         self.parms['light'] = 5
