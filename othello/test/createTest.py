@@ -76,4 +76,11 @@ class CreateTest(TestCase):
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
         
-        
+    def test902_NonIntegerLight(self):
+        self.setUp()
+        self.parms['light'] = 'w'
+        expected = 'error: non-integer light value'
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
+
