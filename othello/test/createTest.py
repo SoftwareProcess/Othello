@@ -207,5 +207,13 @@ class CreateTest(TestCase):
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
-        
+    
+    def test942_DarkEqualsBlank(self):
+        self.setUp()
+        self.parms['dark'] = 2
+        self.parms['blank'] = 2
+        expected = 'error: dark is equal to blank value'
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
         
