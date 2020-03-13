@@ -117,3 +117,11 @@ class CreateTest(TestCase):
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test913_NullDark(self):
+        self.setUp()
+        self.parms['dark'] = None
+        expected = 'error: Null dark value'
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
