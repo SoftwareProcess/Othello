@@ -1,6 +1,8 @@
 def _create(parms):
     if ('light' not in parms.keys()):
         parms['light'] = 1
+    if ('dark' not in parms.keys()):
+        parms['light'] = 2
     # Light sad path boundary check        
     if (parms['light'] == None):
         return {'status': 'error: Null light value'}
