@@ -198,3 +198,12 @@ class CreateTest(TestCase):
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+
+    def test941_LightEqualsBlank(self):
+        self.setUp()
+        self.parms['light'] = 5
+        self.parms['blank'] = 5
+        expected = 'error: Light is equal to blank value'
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()

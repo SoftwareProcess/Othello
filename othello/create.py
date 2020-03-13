@@ -47,4 +47,5 @@ def _create(parms):
     # Checking if values are equal to two different keys
     if (int(parms['light']) == int(parms['dark'])):
         return {'status': 'error: Light is equal to dark value'}
+    
     return result
