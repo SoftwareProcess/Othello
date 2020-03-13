@@ -5,6 +5,9 @@ def _create(parms):
         parms['dark'] = 2
     if ('blank' not in parms.keys()):
         parms['blank'] = 0
+    if ('size' not in parms.keys()):
+        parms['size'] = 8
+        
     # Light sad path boundary check        
     if (parms['light'] == None):
         return {'status': 'error: Null light value'}
