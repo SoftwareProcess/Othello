@@ -12,6 +12,9 @@ def _create(parms):
         return {'status': 'error: below bound light value'}
 
     # dark sad path boundary check
+    try: (int(parms['dark']))
+    except ValueError:
+        return {'status': 'error: non-integer dark value'}
     if (int(parms['dark']) > 9):
         return {'status': 'error: above bound dark value'}
     elif (int(parms['dark']) < 0):
