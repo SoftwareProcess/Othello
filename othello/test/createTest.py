@@ -157,3 +157,11 @@ class CreateTest(TestCase):
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test930_AboveBoundSize(self):
+        self.setUp()
+        self.parms['size'] = '17'
+        expected = 'error: above bound size value'
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
