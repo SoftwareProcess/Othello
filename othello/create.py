@@ -1,9 +1,7 @@
 def _create(parms):
-        
-    # Light sad path boundary check
     if ('light' not in parms.keys()):
         parms['light'] = 1
-        
+    # Light sad path boundary check        
     if (parms['light'] == None):
         return {'status': 'error: Null light value'}
     try: (int(parms['light']))
