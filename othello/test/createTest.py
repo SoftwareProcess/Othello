@@ -165,3 +165,11 @@ class CreateTest(TestCase):
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test931_BelowBoundSize(self):
+        self.setUp()
+        self.parms['size'] = '5'
+        expected = 'error: below bound size value'
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
