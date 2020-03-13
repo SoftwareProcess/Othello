@@ -174,7 +174,7 @@ class CreateTest(TestCase):
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
         
-    def test922_NonIntegerSize(self):
+    def test932_NonIntegerSize(self):
         self.setUp()
         self.parms['size'] = '1.2'
         expected = 'error: non-integer size value'
@@ -182,7 +182,7 @@ class CreateTest(TestCase):
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
         
-    def test923_NullSize(self):
+    def test933_NullSize(self):
         self.setUp()
         self.parms['size'] = None
         expected = 'error: Null size value'
