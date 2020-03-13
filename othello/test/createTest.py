@@ -93,4 +93,11 @@ class CreateTest(TestCase):
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
-
+        
+    def test910_AboveBoundDark(self):
+        self.setUp()
+        self.parms['dark'] = '10'
+        expected = 'error: above bound dark value'
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
