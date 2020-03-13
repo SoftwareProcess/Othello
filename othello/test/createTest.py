@@ -2,15 +2,20 @@ from unittest import TestCase
 from othello.create import _create as create
 
 class CreateTest(TestCase):
+    '''
+        Created on Mar 8, 2020
+        
+        @author:    Tae Myles
+    '''
     #    Desired level of confidence: boundary value analysis
     #    Input-output analysis
-    #        inputs:    light -> integer .GE. 0, .LE. 9, Optional (Integer 1), unvalidated
-    #                   dark -> integer .GE. 0, .LE. 9, Optional (Integer 2), unvalidated
-    #                   blank -> integer .GE. 0, .LE. 9, Optional (Integer 0), unvalidated
-    #                   size -> integer .GE. 6, .LE. 16, Optional (Integer 8), unvalidated
-    #        ouputs:    board -> dictionary .GE.0 .LE.9,
-    #                   tokens -> dictionary value specified by light, dark, and blank
-    #                   integrity -> dictionary value is sha256 hash hexdigest of the strin
+    #        inputs:    light -> dictionary string key, value .GE. 0, .LE. 9, Optional (Integer 1), unvalidated
+    #                   dark -> dictionary string key, value .GE. 0, .LE. 9, Optional (Integer 2), unvalidated
+    #                   blank -> dictionary string key, value .GE. 0, .LE. 9, Optional (Integer 0), unvalidated
+    #                   size -> dictionary string key, value .GE. 6, .LE. 16, Optional (Integer 8), unvalidated
+    #        ouputs:    board -> dictionary string key, list of integer value .GE.0 .LE.9,
+    #                   tokens -> dictionary string key, value specified by light, dark, and blank
+    #                   integrity -> dictionary string key, value is sha256 hash hexdigest of the strin
     #                   status -> dictionary string associating that the board is created
     #    Happy path analysis
     #        light:    low value    light = 0
@@ -48,197 +53,18 @@ class CreateTest(TestCase):
     #    light=blank:    same value as ligth and blank    light = 5 & blank = 5
     #    blank=dark:    same value as blank and dark    blank = 2 & dark = 2
     
+    def setUp(self):
+        self.parms = {'op': 'create', 'light': '1', 'dark': '2', 'blank': '0', 'size': '8'}
+    
+    def tearDown(self):
+        self.parms = {'op': 'create', 'light': '1', 'dark': '2', 'blank': '0', 'size': '8'}
+        
     #900 Sad Path
     def test900_AboveBoundLight(self):
-        light = 10
-        dark = 2
-        blank = 0
-        size = 8
-        errorDict = {'status':'error: Above bound light integer'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-        
-    
-    def test901_BelowBoundLight(self):
-        light = -1
-        dark = 2
-        blank = 0
-        size = 8
-        errorDict = {'status':'error: Below bound light integer'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-        
-    def test902_NonIntegerLight(self):
-        light = 'w'
-        dark = 2
-        blank = 0
-        size = 8
-        errorDict = {'status':'error: Non integer light'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-        
-    def test903_NullLight(self):
-        light = None
-        dark = 2
-        blank = 0
-        size = 8
-        errorDict = {'status':'error: Null light'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-    
-    def test910_AboveBoundDark(self):
-        light = 1
-        dark = 10
-        blank = 0
-        size = 8
-        errorDict = {'status':'error: Above bound dark integer'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-    
-    def test911_BelowBoundDark(self):
-        light = 1
-        dark = -1
-        blank = 0
-        size = 8
-        errorDict = {'status':'error: Below bound dark integer'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-        
-    def test912_NonIntegerDark(self):
-        light = 1
-        dark = 'd'
-        blank = 0
-        size = 8
-        errorDict = {'status':'error: Non integer dark'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-    
-    def test913_NullDark(self):
-        light = 1
-        dark = None
-        blank = 0
-        size = 8
-        errorDict = {'status':'error: Null dark'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-        
-    def test920_AboveBoundBlank(self):
-        light = 1
-        dark = 2
-        blank = 10
-        size = 8
-        errorDict = {'status':'error: Above bound blank integer'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-    
-    def test921_BelowBoundBlank(self):
-        light = 1
-        dark = 2
-        blank = -1
-        size = 8
-        errorDict = {'status':'error: Below bound blank integer'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-        
-    def test922_NonIntegerBlank(self):
-        light = 1
-        dark = 2
-        blank = 'b'
-        size = 8
-        errorDict = {'status':'error: Non integer blank'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-    
-    def test923_NullBlank(self):
-        light = 1
-        dark = 2
-        blank = None
-        size = 8
-        errorDict = {'status':'error: Null blank'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-        
-    def test930_AboveBoundSize(self):
-        light = 1
-        dark = 2
-        blank = 0
-        size = 17
-        errorDict = {'status':'error: Above bound size integer'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-
-    def test931_BelowBoundSize(self):
-        light = 1
-        dark = 2
-        blank = 0
-        size = 5
-        errorDict = {'status':'error: Below bound size integer'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-        
-    def test932_NonIntegerSize(self):
-        light = 1
-        dark = 2
-        blank = 0
-        size = 1.2
-        errorDict = {'status':'error: Non integer size'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-
-    def test933_NullSize(self):
-        light = 1
-        dark = 2
-        blank = 0
-        size = None
-        errorDict = {'status':'error: Null size'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-    
-    def test940_DarkEqualsLight(self):
-        light = 5
-        dark = 5
-        blank = 0
-        size = 8
-        errorDict = {'status':'error: Dark equals light value'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-        
-    def test941_BlankEqualsLight(self):
-        light = 5
-        dark = 2
-        blank = 5
-        size = 8
-        errorDict = {'status':'error: Blank equals light value'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-
-    def test942_BlankEqualsDark(self):
-        light = 1
-        dark = 2
-        blank = 2
-        size = 8
-        errorDict = {'status':'error: Blank equals dark value'}
-        actual = create(light, dark, blank, size)
-        expected = errorDict
-        self.assertEqual(actual, expected)
-        
-        
+        self.setUp()
+        self.parms['light'] = '10'
+        expected = 'error: above bound light value'
+        actual = self.result['status']
+        self.assertEqual(expected, actual)
+        self.tearDown()
         
