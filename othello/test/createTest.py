@@ -231,4 +231,4 @@ class CreateTest(TestCase):
         expected = 1
         del self.parms['light']
         self.actual = create(self.parms)
-        self.assertEqual(expected, self.actual['light'])
+        self.assertEqual(expected, self.actual['tokens']['light'])
