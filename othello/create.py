@@ -21,4 +21,8 @@ def _create(parms):
         return {'status': 'error: above bound dark value'}
     elif (int(parms['dark']) < 0):
         return {'status': 'error: below bound dark value'}
+    
+    # blank sad path boundary check
+    if (int(parms['blank']) > 9):
+        return {'status': 'error: above bound blank value'}
     return result
