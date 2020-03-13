@@ -23,6 +23,8 @@ def _create(parms):
         return {'status': 'error: below bound dark value'}
     
     # blank sad path boundary check
+    if (parms['blank'] == None):
+        return {'status': 'error: Null blank value'}
     try: (int(parms['blank']))
     except ValueError:
         return {'status': 'error: non-integer blank value'}
