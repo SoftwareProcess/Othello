@@ -88,7 +88,7 @@ class CreateTest(TestCase):
         defaultSize = 8
         del self.parms['size']
         self.actual = create(self.parms)
-        expected = len(self.actual['board'])/defaultSize
+        expected = int(len(self.actual['board'])/defaultSize)
         self.assertEqual(expected, len(self.actual['board']))
         
     #900 Sad Path
