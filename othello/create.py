@@ -5,6 +5,6 @@ def _create(parms):
         result = {'status': 'error: below bound light value'}
     try: (int(parms['light']))
     except ValueError:
-        result = {'status': 'error: non-integer light value'}
+        return {'status': 'error: non-integer light value'}
         
     return result

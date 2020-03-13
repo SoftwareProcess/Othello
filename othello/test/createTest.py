@@ -1,12 +1,14 @@
+'''
+    Created on Mar 8, 2020
+    
+    @author:    Tae Myles
+'''
+
 from unittest import TestCase
 from othello.create import _create as create
 
 class CreateTest(TestCase):
-    '''
-        Created on Mar 8, 2020
-        
-        @author:    Tae Myles
-    '''
+
     #    Desired level of confidence: boundary value analysis
     #    Input-output analysis
     #        inputs:    light -> dictionary string key, value .GE. 0, .LE. 9, Optional (Integer 1), unvalidated
