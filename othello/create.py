@@ -25,4 +25,7 @@ def _create(parms):
     # blank sad path boundary check
     if (int(parms['blank']) > 9):
         return {'status': 'error: above bound blank value'}
+    elif (int(parms['blank']) < 0):
+        return {'status': 'error: below bound blank value'}
+    
     return result
