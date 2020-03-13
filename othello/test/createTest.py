@@ -189,3 +189,12 @@ class CreateTest(TestCase):
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test940_LightEqualsDark(self):
+        self.setUp()
+        self.parms['light'] = 5
+        self.parms['dark'] = 5
+        expected = 'error: Light is equal to dark value'
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
