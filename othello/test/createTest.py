@@ -59,8 +59,7 @@ class CreateTest(TestCase):
         self.parms = {'op': 'create', 'light': '1', 'dark': '2', 'blank': '0', 'size': '8'}
     
     def tearDown(self):
-        self.parms = {'op': 'create', 'light': '1', 'dark': '2', 'blank': '0', 'size': '8'}
-        
+        self.parms = {'op': 'create', 'light': '1', 'dark': '2', 'blank': '0', 'size': '8'}  
     #900 Sad Path
     def test900_AboveBoundLight(self):
         self.setUp()
@@ -226,3 +225,10 @@ class CreateTest(TestCase):
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
         
+    #1000 Personal test  
+    def test1000_DefaultLightValue(self):
+        self.setUp()
+        expected = 1
+        del self.parms['light']
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['light'])
