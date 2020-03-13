@@ -69,12 +69,13 @@ class CreateTest(TestCase):
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['tokens']['light'])
         
-    def test1000_DefaultDarkValue(self):
+    def test1001_DefaultDarkValue(self):
         self.setUp()
         expected = 2
         del self.parms['dark']
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['tokens']['dark'])
+    
 
         
     #900 Sad Path
