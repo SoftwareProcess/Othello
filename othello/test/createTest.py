@@ -71,7 +71,7 @@ class CreateTest(TestCase):
     def test901_BelowBoundLight(self):
         self.setUp()
         self.parms['light'] = '-1'
-        expected = 'error: above bound light value'
+        expected = 'error: below bound light value'
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
