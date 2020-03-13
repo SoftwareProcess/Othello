@@ -10,8 +10,7 @@ def _create(parms):
         return {'status': 'error: above bound light value'}
     elif (int(parms['light']) < 0):
         return {'status': 'error: below bound light value'}
-    elif (int(parms['light']) == int(parms['dark'])):
-        return {'status': 'error: Light is equal to dark value'}
+    
     # dark sad path boundary check
     if (parms['dark'] == None):
         return {'status': 'error: Null dark value'}
@@ -45,4 +44,7 @@ def _create(parms):
     elif (int(parms['size']) < 6):
         return {'status': 'error: below bound size value'}
     
+    # Checking if values are equal to two different keys
+    if (int(parms['light']) == int(parms['dark'])):
+        return {'status': 'error: Light is equal to dark value'}
     return result
