@@ -82,7 +82,13 @@ class CreateTest(TestCase):
         del self.parms['blank']
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['tokens']['blank'])
-
+        
+    def test1003_DefaultSizeValue(self):
+        self.setUp()
+        expected = 8
+        del self.parms['size']
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['tokens']['size'])
         
     #900 Sad Path
     def test900_AboveBoundLight(self):
