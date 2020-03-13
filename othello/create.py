@@ -43,6 +43,8 @@ def _create(parms):
         return {'status': 'error: above bound size value'}
     elif (int(parms['size']) < 6):
         return {'status': 'error: below bound size value'}
+    elif (int(parms['size']) % 2 != 0):
+        return {'status': 'error: Odd size value'}
     
     # Checking if values are equal to two different keys
     if (int(parms['light']) == int(parms['dark'])):
