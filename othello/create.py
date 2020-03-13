@@ -1,4 +1,5 @@
 def _create(parms):
+    result = {'empty': 'empty'}
     # Light sad path boundary check
     if (parms['light'] == None):
         return {'status': 'error: Null light value'}
@@ -6,11 +7,11 @@ def _create(parms):
     except ValueError:
         return {'status': 'error: non-integer light value'}
     if (int(parms['light']) > 9):
-        result = {'status': 'error: above bound light value'}
+        return = {'status': 'error: above bound light value'}
     elif (int(parms['light']) < 0):
-        result = {'status': 'error: below bound light value'}
+        return = {'status': 'error: below bound light value'}
 
     # dark sad path boundary check
     if (int(parms['dark']) > 9):
-        result = {'status': 'error: above bound dark value'}
+        return = {'status': 'error: above bound dark value'}
     return result
