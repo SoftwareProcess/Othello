@@ -3,7 +3,8 @@ def _create(parms):
         result = {'status': 'error: above bound light value'}
     elif (int(parms['light']) < 0):
         result = {'status': 'error: below bound light value'}
-    elif (isinstance(int(parms['light']), int)):
+    try: (int(parms['light'])):
+    except ValueError:
         result = {'status': 'error: non-integer light value'}
         
     return result
