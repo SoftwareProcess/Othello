@@ -116,4 +116,4 @@ class CreateTest(TestCase):
         expected = 'error: non-integer dark value'
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['status'])
-        self.tearDown(
+        self.tearDown()
