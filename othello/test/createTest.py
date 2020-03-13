@@ -64,7 +64,8 @@ class CreateTest(TestCase):
         self.setUp()
         self.parms['light'] = '10'
         expected = 'error: above bound light value'
-        actual = self.create(self.parms)['status']
-        self.assertEqual(expected, actual)
+        self.actual = create(self.parms)
+        
+        self.assertEqual(expected, self.actual['status'])
         self.tearDown()
         
