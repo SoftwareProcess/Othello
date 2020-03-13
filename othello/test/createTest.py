@@ -181,3 +181,11 @@ class CreateTest(TestCase):
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test923_NullSize(self):
+        self.setUp()
+        self.parms['size'] = None
+        expected = 'error: Null size value'
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
