@@ -75,7 +75,13 @@ class CreateTest(TestCase):
         del self.parms['dark']
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['tokens']['dark'])
-    
+        
+    def test1002_DefaultBlankValue(self):
+        self.setUp()
+        expected = 0
+        del self.parms['blank']
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['tokens']['blank'])
 
         
     #900 Sad Path
