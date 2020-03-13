@@ -1,12 +1,4 @@
 def _create(parms):
-    result = {'board': 0, 
-              'tokens': {'light': int(parms['light']), 'dark': int(parms['dark']),
-                         'blank': int(parms['blank'])
-                         },
-              'status': 'ok',
-              'integrity': ''}
-    if ('light' not in parms.keys()):
-        parms['light'] = 1
         
     # Light sad path boundary check
     if (parms['light'] == None):
@@ -61,4 +53,14 @@ def _create(parms):
         return {'status': 'error: blank is equal to light value'}
     if (int(parms['dark']) == int(parms['blank'])):
         return {'status': 'error: dark is equal to blank value'}
+    
+    result = {'board': 0, 
+              'tokens': {'light': int(parms['light']), 'dark': int(parms['dark']),
+                         'blank': int(parms['blank'])
+                         },
+              'status': 'ok',
+              'integrity': ''}
+    if ('light' not in parms.keys()):
+        parms['light'] = 1
+        
     return result
