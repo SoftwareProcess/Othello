@@ -88,7 +88,7 @@ class CreateTest(TestCase):
         expected = 8
         del self.parms['size']
         self.actual = create(self.parms)
-        self.assertEqual(expected, self.actual['size'])
+        self.assertEqual(expected, self.actual['board'])
         
     #900 Sad Path
     def test900_AboveBoundLight(self):

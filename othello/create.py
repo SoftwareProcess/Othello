@@ -67,7 +67,7 @@ def _create(parms):
     if (int(parms['dark']) == int(parms['blank'])):
         return {'status': 'error: dark is equal to blank value'}
     
-    result = {'board': 0, 
+    result = {'board': int(parms['size']), 
               'tokens': {'light': int(parms['light']), 'dark': int(parms['dark']),
                          'blank': int(parms['blank'])
                          },
