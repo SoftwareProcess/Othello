@@ -34,6 +34,8 @@ def _create(parms):
         return {'status': 'error: below bound blank value'}
     
     # size sad path boundary check
+    if (parms['size'] == None):
+        return {'status': 'error: Null size value'}
     try: (int(parms['size']))
     except ValueError:
         return {'status': 'error: non-integer size value'}
