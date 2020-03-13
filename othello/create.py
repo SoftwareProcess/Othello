@@ -1,5 +1,4 @@
 def _create(parms):
-    
     try: (int(parms['light']))
     except ValueError:
         return {'status': 'error: non-integer light value'}
