@@ -1,3 +1,3 @@
 def _create(parms):
-    result = {'create': 'create stub'}
+    result = {'status': 'error: above bound light value'}
     return result
