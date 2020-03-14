@@ -115,6 +115,22 @@ class CreateTest(TestCase):
                     0, 0, 0, 0, 0, 0, 0, 0]
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['board'])
+
+    def test1005_SizeTenBoard(self):
+        self.setUp()
+        self.parms['size'] = 10
+        expected = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 1, 2, 0, 0, 0, 0,
+                    0, 0, 0, 0, 2, 1, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['board'])
         
         
     #900 Sad Path
