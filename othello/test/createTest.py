@@ -90,6 +90,20 @@ class CreateTest(TestCase):
         self.actual = create(self.parms)
         expected = int(defaultSize ** 2)
         self.assertEqual(expected, len(self.actual['board']))
+    
+    def test1004_SizeEightBoard(self):
+        self.setUp()
+        size = 8
+        expected = [0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 1, 2, 0, 0, 0,
+                    0, 0, 0, 2, 1, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0]
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['board'])
         
     #900 Sad Path
     def test900_AboveBoundLight(self):
