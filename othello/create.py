@@ -99,8 +99,8 @@ def _create(parms):
     if (len(result.get('board')) == 196):
         boardList[90] = int(parms['light'])
         boardList[91] = int(parms['dark'])
-        boardList[103] = int(parms['dark'])
-        boardList[104] = int(parms['light'])
+        boardList[104] = int(parms['dark'])
+        boardList[105] = int(parms['light'])
         
 
     return result
