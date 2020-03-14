@@ -149,7 +149,26 @@ class CreateTest(TestCase):
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['board'])
-        
+    
+    def test1007_SizeFourteenBoard(self):
+        self.setUp()
+        self.parms['size'] = 14
+        expected = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['board'])
+
+
         
     #900 Sad Path
     def test900_AboveBoundLight(self):
