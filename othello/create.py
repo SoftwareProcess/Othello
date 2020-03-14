@@ -96,7 +96,6 @@ def _create(parms):
         boardList[66] = int(parms['dark'])
         boardList[77] = int(parms['dark'])
         boardList[78] = int(parms['light'])
-        
     
         
 
