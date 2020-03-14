@@ -86,6 +86,11 @@ def _create(parms):
         boardList[28] = int(parms['dark'])
         boardList[35] = int(parms['dark'])
         boardList[36] = int(parms['light'])
+    if (len(result.get('board')) == 100):
+        boardList[44] = int(parms['light'])
+        boardList[45] = int(parms['dark'])
+        boardList[54] = int(parms['dark'])
+        boardList[55] = int(parms['light'])
         
     
         
