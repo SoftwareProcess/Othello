@@ -93,7 +93,7 @@ class CreateTest(TestCase):
     
     def test1004_SizeEightBoard(self):
         self.setUp()
-        size = 8
+        self.parms['size'] = 8
         expected = [0, 0, 0, 0, 0, 0, 0, 0,
                     0, 0, 0, 0, 0, 0, 0, 0,
                     0, 0, 0, 0, 0, 0, 0, 0,

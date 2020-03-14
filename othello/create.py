@@ -76,7 +76,7 @@ def _create(parms):
     
     # Setting up the board according to size
     boardList = result['board']
-    if len(result.get(['board']) == 64):
+    if len(result.get('board') == 64):
         boardList[36] = int(parms['light'])
         boardList[37] = int(parms['dark'])
         boardList[44] = int(parms['dark'])
