@@ -9,12 +9,12 @@ def __checkBoundary(input):
     for parameter in ['light', 'dark', 'blank']:
         if (parameter == None):
             return {'status': 'error: Null ' + parameter +  ' value'}
-        try: int(input(parameter))
+        try: int(input[parameter])
         except ValueError:
             return {'status': 'error: non-integer ' + parameter + 'value'}
-        if (int(input(parameter)) > 9):
+        if (int(input[parameter]) > 9):
             return {'status': 'error: above bound' + parameter + 'value'} 
-        elif (int(input(parameter)) < 0):
+        elif (int(input[parameter]) < 0):
             return {'status': 'error: below bound' + parameter + 'value'}
         
     if (input['size'] == None):
