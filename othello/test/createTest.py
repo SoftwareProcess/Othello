@@ -496,6 +496,23 @@ class CreateTest(TestCase):
                     'integrity': 'b11fcf5f9ac9d3b8cea8085208e210182a8d6b73a84028562ab2c87d190b9ada'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        
+    def test070_ExtraneousParameterIgnored(self):
+        self.setUp()
+        self.parms['extra'] = 1234
+        expected = {'board': [0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 1, 2, 0, 0, 0,
+                              0, 0, 0, 2, 1, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0],
+                    'tokens': {'light': 1, 'dark': 2, 'blank': 0},
+                    'status': 'ok',
+                    'integrity': 'b11fcf5f9ac9d3b8cea8085208e210182a8d6b73a84028562ab2c87d190b9ada'}
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual)
     #900 Sad Path
     def test900_AboveBoundLight(self):
         self.setUp()
