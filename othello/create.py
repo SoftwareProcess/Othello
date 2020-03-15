@@ -11,7 +11,7 @@ def __setBoard(boardDict):
     dark = int(boardDict['tokens']['dark'])
     numberOfElements = len(board)
     
-    if (numberOfElements == 32):
+    if (numberOfElements == 36):
         board[14] = light
         board[15] = dark
         board[20] = dark
