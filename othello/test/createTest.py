@@ -444,7 +444,7 @@ class CreateTest(TestCase):
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
      
-    def test050_LowBoundSizeNominalLightDarkBlank(self):
+    def test051_LowBoundSizeNominalLightDarkBlank(self):
         self.setUp()
         self.parms['light'] = 3
         self.parms['dark'] = 4
