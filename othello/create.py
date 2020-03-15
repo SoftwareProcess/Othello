@@ -13,9 +13,9 @@ def __checkBoundary(input):
         except ValueError:
             return {'status': 'error: non-integer ' + parameter + 'value'}
         if (int(input[parameter]) > 9):
-            return {'status': 'error: above bound' + parameter + 'value'} 
+            return {'status': 'error: above bound ' + parameter + ' value'} 
         elif (int(input[parameter]) < 0):
-            return {'status': 'error: below bound' + parameter + 'value'}
+            return {'status': 'error: below bound ' + parameter + ' value'}
         
     if (input['size'] == None):
         return {'status': 'error: Null size value'}
