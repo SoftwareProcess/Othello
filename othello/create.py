@@ -8,7 +8,7 @@ import hashlib
 def __checkBoundary(inputParam):
     for parameter in ['light', 'dark', 'blank']:
         if (inputParam[parameter] == None):
-            return {'status': 'error: Null ' + parameter +  ' value'}
+            inputParam = {'status': 'error: Null ' + parameter +  ' value'}
         try: int(inputParam[parameter])
         except ValueError:
             return {'status': 'error: non-integer ' + parameter + ' value'}
