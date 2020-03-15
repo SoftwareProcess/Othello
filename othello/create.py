@@ -76,7 +76,7 @@ def _create(parms):
         try: int(parms[parameter])
         except ValueError:
             return {'status': 'error: non-integer ' + parameter + ' value'}
-        if (parms.keys == 'size'):
+        if (parameter == 'size'):
             if (int(parms['size']) > 16):
                 return {'status': 'error: above bound size value'}
             if (int(parms['size']) < 6):
