@@ -197,9 +197,30 @@ class CreateTest(TestCase):
         expected = 'b11fcf5f9ac9d3b8cea8085208e210182a8d6b73a84028562ab2c87d190b9ada'
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['integrity'])
-        
     
-        
+    #000 Happy path
+    def test010_NominalLightDarkBlankSize(self):
+        self.setUp()
+        self.parms['light'] = 6
+        self.parms['dark'] = 5
+        self.parms['blank'] = 1
+        self.parms['size'] = 10
+        expected = {'board': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                              1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                              1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                              1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                              1, 1, 1, 1, 6, 5, 1, 1, 1, 1,
+                              1, 1, 1, 1, 5, 6, 1, 1, 1, 1,
+                              1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                              1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                              1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                              1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 
+                    'tokens': {'light': 6, 'dark': 5, 'blank': 1},
+                    'status': 'ok',
+                    'integrity': 'd0f18c5b412ab1dbf89da19baa33cc35f4a7dd0619ce7b7dcb2381d2cb14a412'}
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual)
+    
     #900 Sad Path
     def test900_AboveBoundLight(self):
         self.setUp()
