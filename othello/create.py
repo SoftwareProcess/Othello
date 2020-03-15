@@ -119,6 +119,6 @@ def _create(parms):
         message = message + str(i)
         
     message = message + "/" + str(light) + "/" + str(dark) + "/" + str(blank) + "/" + str(dark)
-    sha256HexDigest = hashlib.sha256(message.encode('utf-8')).digest()
+    sha256HexDigest = hashlib.sha256(message.encode('utf-8')).hexdigest()
     result['integrity'] = sha256HexDigest
     return result
