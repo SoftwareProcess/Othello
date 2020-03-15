@@ -35,7 +35,7 @@ def __setBoard(dictionary):
     if (numberOfElements == 196):
         board[90] = light
         board[91] = dark
-        board[104] = dark
+        board[104] = dark #30
         board[105] = light
     if (numberOfElements == 256):
         board[119] = light
@@ -73,7 +73,7 @@ def _create(parms):
     for parameter in ['light', 'dark', 'blank', 'size']:
         if (parms[parameter] == None):
             return {'status': 'error: Null ' + parameter +  ' value'}
-        try: int(parms[parameter])
+        try: int(parms[parameter]) #60
         except ValueError:
             return {'status': 'error: non-integer ' + parameter + ' value'}
         
@@ -84,11 +84,11 @@ def _create(parms):
             return {'status': 'error: below bound ' + threeParameter + ' value'}
         
     if (int(parms['size']) > 16):
-        return {'status': 'error: above bound '+ parameter + ' value'}
+        return {'status': 'error: above bound size value'}
     if (int(parms['size']) < 6):
-        return {'status': 'error: below bound ' + parameter + ' value'}
+        return {'status': 'error: below bound size value'}
     if (int(parms['size']) % 2 != 0):
-        return {'status': 'error: Odd ' + parameter + ' value'}
+        return {'status': 'error: Odd size value'}
     
     if (int(parms['light']) == int(parms['dark'])):
         return {'status': 'error: light is equal to dark value'}
