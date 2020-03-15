@@ -192,7 +192,11 @@ class CreateTest(TestCase):
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['board'])
         
-    def test1009_Sha256
+    def test1009_DefaultSha256HexDigest(self):
+        self.setUp()
+        expected = 'b11fcf5f9ac9d3b8cea8085208e210182a8d6b73a84028562ab2c87d190b9ada'
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual['integrity'])
         
     #900 Sad Path
     def test900_AboveBoundLight(self):
