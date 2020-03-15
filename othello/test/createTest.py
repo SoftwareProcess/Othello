@@ -70,6 +70,7 @@ class CreateTest(TestCase):
         del self.parms['light']
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['tokens']['light'])
+        self.tearDown()
         
     def test1001_DefaultDarkValue(self):
         self.setUp()
@@ -77,6 +78,7 @@ class CreateTest(TestCase):
         del self.parms['dark']
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['tokens']['dark'])
+        self.tearDown()
         
     def test1002_DefaultBlankValue(self):
         self.setUp()
@@ -84,6 +86,7 @@ class CreateTest(TestCase):
         del self.parms['blank']
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['tokens']['blank'])
+        self.tearDown()
         
     def test1003_DefaultSizeValue(self):
         self.setUp()
@@ -92,6 +95,7 @@ class CreateTest(TestCase):
         self.actual = create(self.parms)
         expected = int(defaultSize ** 2)
         self.assertEqual(expected, len(self.actual['board']))
+        self.tearDown()
         
     def test1004_SizeSixBoard(self):
         self.parms['size'] = 6
@@ -103,6 +107,7 @@ class CreateTest(TestCase):
                     0, 0, 0, 0, 0, 0]
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['board'])
+        self.tearDown()
     
     def test1005_SizeEightBoard(self):
         self.setUp()
@@ -117,6 +122,7 @@ class CreateTest(TestCase):
                     0, 0, 0, 0, 0, 0, 0, 0]
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['board'])
+        self.tearDown()
 
     def test1005_SizeTenBoard(self):
         self.setUp()
@@ -133,6 +139,7 @@ class CreateTest(TestCase):
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['board'])
+        self.tearDown()
         
     def test1006_SizeTwelveBoard(self):
         self.setUp()
@@ -151,6 +158,7 @@ class CreateTest(TestCase):
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['board'])
+        self.tearDown()
     
     def test1007_SizeFourteenBoard(self):
         self.setUp()
@@ -171,6 +179,7 @@ class CreateTest(TestCase):
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['board'])
+        self.tearDown()
 
     def test1008_SizeSixteenBoard(self):
         self.setUp()
@@ -193,12 +202,14 @@ class CreateTest(TestCase):
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['board'])
+        self.tearDown()
         
     def test1009_DefaultSha256HexDigest(self):
         self.setUp()
         expected = 'b11fcf5f9ac9d3b8cea8085208e210182a8d6b73a84028562ab2c87d190b9ada'
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['integrity'])
+        self.tearDown()
     
     #000 Happy path
     def test010_NominalLightDarkBlankSize(self):
@@ -222,6 +233,7 @@ class CreateTest(TestCase):
                     'integrity': 'd0f18c5b412ab1dbf89da19baa33cc35f4a7dd0619ce7b7dcb2381d2cb14a412'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        self.tearDown()
     
     def test020_HighBoundLightNominalDarkBlankSize(self):
         self.setUp()
@@ -244,6 +256,7 @@ class CreateTest(TestCase):
                     'integrity': '723c769319c6529cf8520336232a9e5d281be77df1455c6ceb10a5d1d4733236'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        self.tearDown()
         
     def test021_LowBoundLightNominalDarkBlankSize(self):
         self.setUp()
@@ -266,6 +279,7 @@ class CreateTest(TestCase):
                     'integrity': '4bd2efa7e0d5f13551f7277950e45b6fcfe7d5159b80823a5dcbdf57abb4d83a'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        self.tearDown()
         
     def test022_MissingLightNominalDarkBlankSize(self):
         self.setUp()
@@ -287,6 +301,7 @@ class CreateTest(TestCase):
                     'integrity': 'f211a92f576794a821bb24f359739b8b42a6a16634005a1e4b32313a6575e2be'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        self.tearDown()
         
     def test030_HighBoundDarkNominalLightDarkBlankSize(self):
         self.setUp()
@@ -309,6 +324,7 @@ class CreateTest(TestCase):
                     'integrity': 'a3718ffbc2f822320ee4db10c269a9749859b9952db13ff6b289a6ebd6ce42c6'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        self.tearDown()
         
     def test031_LowBoundDarkNominalLightDarkBlankSize(self):
         self.setUp()
@@ -331,6 +347,7 @@ class CreateTest(TestCase):
                     'integrity': '7bf98e8385a158097f52361dac139bb5882f3eaa48e8146d72d65de5981d2e5e'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        self.tearDown()
         
     def test032_MissingDarkNominalLightDarkBlankSize(self):
         self.setUp()
@@ -352,6 +369,7 @@ class CreateTest(TestCase):
                     'integrity': '71f91a7d487c9e9ad69a43269c6a90c449f97fd93848b8493e47a2f6054e7c82'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        self.tearDown()
         
     def test040_HighBoundBlankNominalLightDarkSize(self):
         self.setUp()
@@ -374,6 +392,7 @@ class CreateTest(TestCase):
                     'integrity': '5b4c82af0cf6a72ab1938b8e5a3c1ce413b9db583d0f974703954427413021d0'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        self.tearDown()
         
     def test041_LowBoundBlankNominalLightDarkSize(self):
         self.setUp()
@@ -396,6 +415,7 @@ class CreateTest(TestCase):
                     'integrity': 'eeaa1d4229234a1453901319e7f584a337595d6d332a22a76c4aae8888cde9d6'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        self.tearDown()
         
     def test042_missingBlankNominalLightDarkSize(self):
         self.setUp()
@@ -417,6 +437,7 @@ class CreateTest(TestCase):
                     'integrity': 'eeaa1d4229234a1453901319e7f584a337595d6d332a22a76c4aae8888cde9d6'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        self.tearDown()
         
     def test050_HighBoundSizeNominalLightDarkBlank(self):
         self.setUp()
@@ -445,6 +466,7 @@ class CreateTest(TestCase):
                     'integrity': '682b1bac788017f23b846862ce44f2c3efe03a22f49de36085e0e57fc6957416'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        self.tearDown()
      
     def test051_LowBoundSizeNominalLightDarkBlank(self):
         self.setUp()
@@ -463,6 +485,7 @@ class CreateTest(TestCase):
                     'integrity': 'b87b212e557d1dc1080f1c6e380bab404ae8cffa048b86e649e54c620f0d9c6a'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        self.tearDown()
         
     def test052_MissingSizeNominalLightDarkBlank(self):
         self.setUp()
@@ -482,6 +505,7 @@ class CreateTest(TestCase):
                     'integrity': '306a2474c8f8b41c9e31af0fe360f9fcaf3531b3b4a1c3624acd8fbc2530b02e'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        self.tearDown()
          
     def test060_AllDefaultParameter(self):
         self.setUp()
@@ -498,6 +522,7 @@ class CreateTest(TestCase):
                     'integrity': 'b11fcf5f9ac9d3b8cea8085208e210182a8d6b73a84028562ab2c87d190b9ada'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        self.tearDown()
         
     def test070_ExtraneousParameterIgnored(self):
         self.setUp()
@@ -515,6 +540,7 @@ class CreateTest(TestCase):
                     'integrity': 'b11fcf5f9ac9d3b8cea8085208e210182a8d6b73a84028562ab2c87d190b9ada'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        self.tearDown()
         
     #900 Sad Path
     def test900_AboveBoundLight(self):
