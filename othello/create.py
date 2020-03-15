@@ -76,19 +76,17 @@ def _create(parms):
         try: int(parms[parameter])
         except ValueError:
             return {'status': 'error: non-integer ' + parameter + ' value'}
-    
-    for parameter in ['light', 'dark', 'blank']:
+        if (parms[parameter] == 'size'):
+            if (int(parms['size']) > 16):
+                return {'status': 'error: above bound size value'}
+            if (int(parms['size']) < 6):
+                return {'status': 'error: below bound size value'}
+            if (int(parms['size']) % 2 != 0):
+                return {'status': 'error: Odd size value'}
         if (int(parms[parameter]) > 9):
             return {'status': 'error: above bound ' + parameter + ' value'} 
         elif (int(parms[parameter]) < 0):
             return {'status': 'error: below bound ' + parameter + ' value'}
-        
-    if (int(parms['size']) > 16):
-        return {'status': 'error: above bound size value'}
-    elif (int(parms['size']) < 6):
-        return {'status': 'error: below bound size value'}
-    elif (int(parms['size']) % 2 != 0):
-        return {'status': 'error: Odd size value'}
     
     if (int(parms['light']) == int(parms['dark'])):
         return {'status': 'error: light is equal to dark value'}
