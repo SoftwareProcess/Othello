@@ -15,9 +15,9 @@ class CreateTest(TestCase):
     #                   dark -> dictionary string key, value .GE. 0, .LE. 9, Optional (Integer 2), unvalidated
     #                   blank -> dictionary string key, value .GE. 0, .LE. 9, Optional (Integer 0), unvalidated
     #                   size -> dictionary string key, value .GE. 6, .LE. 16, Optional (Integer 8), unvalidated
-    #        ouputs:    board -> dictionary string key, list of integer value .GE.0 .LE.9,
+    #        outputs:    board -> dictionary string key, list of integer value .GE.0 .LE.9,
     #                   tokens -> dictionary string key, value specified by light, dark, and blank
-    #                   integrity -> dictionary string key, value is sha256 hash hexdigest of the strin
+    #                   integrity -> dictionary string key, value is sha256 hash hex digest of the strin
     #                   status -> dictionary string associating that the board is created
     #    Happy path analysis
     #        light:    low value    light = 0
@@ -32,6 +32,8 @@ class CreateTest(TestCase):
     #        size:    low value    size = 6
     #                  high value    size = 16
     #                  missing size    size = 8
+    #        default:    light = 1, dark = 2, blank = 0, size = 8
+    #        extraneous output:    'extra' = 1234
     #    
     #    Sad path analysis
     #        light:    above boundary    light = 10
@@ -513,6 +515,7 @@ class CreateTest(TestCase):
                     'integrity': 'b11fcf5f9ac9d3b8cea8085208e210182a8d6b73a84028562ab2c87d190b9ada'}
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
+        
     #900 Sad Path
     def test900_AboveBoundLight(self):
         self.setUp()
