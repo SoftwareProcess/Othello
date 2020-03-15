@@ -5,37 +5,6 @@
 '''
 import hashlib
 
-def __checkBoundary(inputParam):
-    for parameter in ['light', 'dark', 'blank']:
-        if (inputParam[parameter] == None):
-            inputParam = {'status': 'error: Null ' + parameter +  ' value'}
-        try: int(inputParam[parameter])
-        except ValueError:
-            return {'status': 'error: non-integer ' + parameter + ' value'}
-        if (int(inputParam[parameter]) > 9):
-            return {'status': 'error: above bound ' + parameter + ' value'} 
-        elif (int(inputParam[parameter]) < 0):
-            return {'status': 'error: below bound ' + parameter + ' value'}
-        
-    if (inputParam['size'] == None):
-        return {'status': 'error: Null size value'}
-    try: (int(inputParam['size']))
-    except ValueError:
-        return {'status': 'error: non-integer size value'}
-    if (int(inputParam['size']) > 16):
-        return {'status': 'error: above bound size value'}
-    elif (int(inputParam['size']) < 6):
-        return {'status': 'error: below bound size value'}
-    elif (int(inputParam['size']) % 2 != 0):
-        return {'status': 'error: Odd size value'}
-    
-    if (int(inputParam['light']) == int(inputParam['dark'])):
-        return {'status': 'error: light is equal to dark value'}
-    if (int(inputParam['light']) == int(inputParam['blank'])):
-        return {'status': 'error: blank is equal to light value'}
-    if (int(inputParam['dark']) == int(inputParam['blank'])):
-        return {'status': 'error: dark is equal to blank value'}
-    
             
 def __setBoard(boardDict):
     board = boardDict['board']
@@ -84,7 +53,35 @@ def _create(parms):
     if ('size' not in parms.keys()):
         parms['size'] = 8
     
-    __checkBoundary(parms)
+    for parameter in ['light', 'dark', 'blank']:
+        if (parms[parameter] == None):
+            return {'status': 'error: Null ' + parameter +  ' value'}
+        try: int(parms[parameter])
+        except ValueError:
+            return {'status': 'error: non-integer ' + parameter + ' value'}
+        if (int(parms[parameter]) > 9):
+            return {'status': 'error: above bound ' + parameter + ' value'} 
+        elif (int(parms[parameter]) < 0):
+            return {'status': 'error: below bound ' + parameter + ' value'}
+        
+    if (parms['size'] == None):
+        return {'status': 'error: Null size value'}
+    try: (int(parms['size']))
+    except ValueError:
+        return {'status': 'error: non-integer size value'}
+    if (int(parms['size']) > 16):
+        return {'status': 'error: above bound size value'}
+    elif (int(parms['size']) < 6):
+        return {'status': 'error: below bound size value'}
+    elif (int(parms['size']) % 2 != 0):
+        return {'status': 'error: Odd size value'}
+    
+    if (int(parms['light']) == int(parms['dark'])):
+        return {'status': 'error: light is equal to dark value'}
+    if (int(parms['light']) == int(parms['blank'])):
+        return {'status': 'error: blank is equal to light value'}
+    if (int(parms['dark']) == int(parms['blank'])):
+        return {'status': 'error: dark is equal to blank value'}
     
     result = {'board': [int(parms['blank'])] * (int(parms['size']) ** 2), 
               'tokens': {'light': int(parms['light']), 'dark': int(parms['dark']),
