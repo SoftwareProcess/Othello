@@ -6,7 +6,7 @@
 import hashlib
 
 def __checkBoundary(input):
-    for parameter in ('light', 'dark', 'blank'):
+    for parameter in ['light', 'dark', 'blank']:
         if (parameter == None):
             return {'status': 'error: Null ' + parameter +  ' value'}
         try: int(input(parameter))
