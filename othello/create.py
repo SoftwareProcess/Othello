@@ -77,12 +77,12 @@ def _create(parms):
         except ValueError:
             return {'status': 'error: non-integer ' + parameter + ' value'}
         if (parameter == 'size'):
-            if (int(parms['size']) > 16):
-                return {'status': 'error: above bound size value'}
-            if (int(parms['size']) < 6):
-                return {'status': 'error: below bound size value'}
-            if (int(parms['size']) % 2 != 0):
-                return {'status': 'error: Odd size value'}
+            if (int(parms[parameter]) > 16):
+                return {'status': 'error: above bound '+ parameter + ' value'}
+            if (int(parms[parameter]) < 6):
+                return {'status': 'error: below bound ' + parameter + ' value'}
+            if (int(parms[parameter]) % 2 != 0):
+                return {'status': 'error: Odd ' + parameter + ' value'}
         if (int(parms[parameter]) > 9):
             return {'status': 'error: above bound ' + parameter + ' value'} 
         elif (int(parms[parameter]) < 0):
