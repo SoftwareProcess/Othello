@@ -5,11 +5,10 @@
 '''
 import hashlib
 
-            
-def __setBoard(boardDict):
-    board = boardDict['board']
-    light = int(boardDict['tokens']['light'])
-    dark = int(boardDict['tokens']['dark'])
+def __setBoard(dictionary):
+    board = dictionary['board']
+    light = int(dictionary['tokens']['light'])
+    dark = int(dictionary['tokens']['dark'])
     numberOfElements = len(board)
     
     if (numberOfElements == 36):
@@ -42,7 +41,21 @@ def __setBoard(boardDict):
         board[120] = dark
         board[135] = dark
         board[136] = light
-
+    return board
+        
+def __sha256HexDigest(dictionary):
+    light = dictionary['tokens']['light']
+    dark = dictionary['tokens']['dark']
+    blank = dictionary['tokens']['blank']
+    
+    message = ''
+    for index in dictionary['board']:
+        message = message + str(index)
+        
+    message = message + "/" + str(light) + "/" + str(dark) + "/" + str(blank) + "/" + str(dark)
+    sha256HexDigest = hashlib.sha256(message.encode('utf-8')).hexdigest()
+    return sha256HexDigest
+    
 def _create(parms):
     if ('light' not in parms.keys()):
         parms['light'] = 1
@@ -92,18 +105,9 @@ def _create(parms):
 
     
     # Setting up the board according to size
-    __setBoard(result)
+    result['board'] = __setBoard(result)
 
     # Sha256 Hex digest
-    light = result['tokens']['light']
-    dark = result['tokens']['dark']
-    blank = result['tokens']['blank']
+    result['integrity'] = __sha256HexDigest(result)
     
-    message = ''
-    for i in result['board']:
-        message = message + str(i)
-        
-    message = message + "/" + str(light) + "/" + str(dark) + "/" + str(blank) + "/" + str(dark)
-    sha256HexDigest = hashlib.sha256(message.encode('utf-8')).hexdigest()
-    result['integrity'] = sha256HexDigest
     return result
