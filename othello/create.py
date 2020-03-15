@@ -79,9 +79,9 @@ def _create(parms):
         
     for threeParameter in ['light', 'dark', 'blank']:
         if (int(parms[threeParameter]) > 9):
-            return {'status': 'error: above bound ' + parameter + ' value'} 
+            return {'status': 'error: above bound ' + threeParameter + ' value'} 
         if (int(parms[threeParameter]) < 0):
-            return {'status': 'error: below bound ' + parameter + ' value'}
+            return {'status': 'error: below bound ' + threeParameter + ' value'}
         
     if (int(parms['size']) > 16):
         return {'status': 'error: above bound '+ parameter + ' value'}
