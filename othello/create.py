@@ -5,35 +5,35 @@
 '''
 import hashlib
 
-def __checkBoundary(input):
+def __checkBoundary(inputParam):
     for parameter in ['light', 'dark', 'blank']:
-        if (parameter == None):
+        if (inputParam[parameter] == None):
             return {'status': 'error: Null ' + parameter +  ' value'}
-        try: int(input[parameter])
+        try: int(inputParam[parameter])
         except ValueError:
-            return {'status': 'error: non-integer ' + parameter + 'value'}
-        if (int(input[parameter]) > 9):
+            return {'status': 'error: non-integer ' + parameter + ' value'}
+        if (int(inputParam[parameter]) > 9):
             return {'status': 'error: above bound ' + parameter + ' value'} 
-        elif (int(input[parameter]) < 0):
+        elif (int(inputParam[parameter]) < 0):
             return {'status': 'error: below bound ' + parameter + ' value'}
         
-    if (input['size'] == None):
+    if (inputParam['size'] == None):
         return {'status': 'error: Null size value'}
-    try: (int(input['size']))
+    try: (int(inputParam['size']))
     except ValueError:
         return {'status': 'error: non-integer size value'}
-    if (int(input['size']) > 16):
+    if (int(inputParam['size']) > 16):
         return {'status': 'error: above bound size value'}
-    elif (int(input['size']) < 6):
+    elif (int(inputParam['size']) < 6):
         return {'status': 'error: below bound size value'}
-    elif (int(input['size']) % 2 != 0):
+    elif (int(inputParam['size']) % 2 != 0):
         return {'status': 'error: Odd size value'}
     
-    if (int(input['light']) == int(input['dark'])):
+    if (int(inputParam['light']) == int(inputParam['dark'])):
         return {'status': 'error: light is equal to dark value'}
-    if (int(input['light']) == int(input['blank'])):
+    if (int(inputParam['light']) == int(inputParam['blank'])):
         return {'status': 'error: blank is equal to light value'}
-    if (int(input['dark']) == int(input['blank'])):
+    if (int(inputParam['dark']) == int(inputParam['blank'])):
         return {'status': 'error: dark is equal to blank value'}
     
             
@@ -83,7 +83,7 @@ def _create(parms):
         parms['blank'] = 0
     if ('size' not in parms.keys()):
         parms['size'] = 8
-        
+    
     __checkBoundary(parms)
     
     result = {'board': [int(parms['blank'])] * (int(parms['size']) ** 2), 
@@ -92,6 +92,7 @@ def _create(parms):
                          },
               'status': 'ok',
               'integrity': ''}
+
     
     # Setting up the board according to size
     __setBoard(result)
