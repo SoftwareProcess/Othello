@@ -3,6 +3,8 @@
     
     @author:    Tae Myles
 '''
+import hashlib
+
 def _create(parms):
     if ('light' not in parms.keys()):
         parms['light'] = 1
@@ -107,4 +109,16 @@ def _create(parms):
         boardList[135] = int(parms['dark'])
         boardList[136] = int(parms['light'])
 
+    # Sha256 Hex digest
+    light = result['tokens']['light']
+    dark = result['tokens']['dark']
+    blank = result['tokens']['blank']
+    
+    message = ''
+    for i in result['board']:
+        message = message + str(i)
+        
+    message = message + "/" + str(light) + "/" + str(dark) + "/" + str(blank) + "/" + str(dark)
+    sha256HexDigest = hashlib.sha256(message.encode('utf-8')).digest()
+    result['integrity'] = sha256HexDigest
     return result
