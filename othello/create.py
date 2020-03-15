@@ -35,7 +35,7 @@ def __setBoard(dictionary):
     if (numberOfElements == 196):
         board[90] = light
         board[91] = dark
-        board[104] = dark #30
+        board[104] = dark
         board[105] = light
     if (numberOfElements == 256):
         board[119] = light
@@ -73,7 +73,7 @@ def _create(parms):
     for parameter in ['light', 'dark', 'blank', 'size']:
         if (parms[parameter] == None):
             return {'status': 'error: Null ' + parameter +  ' value'}
-        try: int(parms[parameter]) #60
+        try: int(parms[parameter])
         except ValueError:
             return {'status': 'error: non-integer ' + parameter + ' value'}
         
