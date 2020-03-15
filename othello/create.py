@@ -7,8 +7,8 @@ import hashlib
 
 def __setBoard(boardDict):
     board = boardDict['board']
-    light = int(boardDict['token']['light'])
-    dark = int(boardDict['token']['dark'])
+    light = int(boardDict['tokens']['light'])
+    dark = int(boardDict['tokens']['dark'])
     numberOfElements = len(board)
     
     if (numberOfElements == 32):
