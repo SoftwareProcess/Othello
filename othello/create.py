@@ -5,6 +5,7 @@
 '''
 import hashlib
 
+# setBoard method sets the board given value for light, dark, and blank
 def __setBoard(dictionary):
     board = dictionary['board']
     light = int(dictionary['tokens']['light'])
@@ -42,7 +43,9 @@ def __setBoard(dictionary):
         board[135] = dark
         board[136] = light
     return board
-        
+
+# sha256HexDigest method gets the values from the board and light, dark, and blank
+# then converts it to sha256 hex digest
 def __sha256HexDigest(dictionary):
     light = dictionary['tokens']['light']
     dark = dictionary['tokens']['dark']
@@ -55,7 +58,8 @@ def __sha256HexDigest(dictionary):
     message = message + "/" + str(light) + "/" + str(dark) + "/" + str(blank) + "/" + str(dark)
     sha256HexDigest = hashlib.sha256(message.encode('utf-8')).hexdigest()
     return sha256HexDigest
-    
+
+# create method creates an initial board
 def _create(parms):
     if ('light' not in parms.keys()):
         parms['light'] = 1
@@ -66,22 +70,19 @@ def _create(parms):
     if ('size' not in parms.keys()):
         parms['size'] = 8
     
-    for parameter in ['light', 'dark', 'blank']:
+    for parameter in ['light', 'dark', 'blank', 'size']:
         if (parms[parameter] == None):
             return {'status': 'error: Null ' + parameter +  ' value'}
         try: int(parms[parameter])
         except ValueError:
             return {'status': 'error: non-integer ' + parameter + ' value'}
+    
+    for parameter in ['light', 'dark', 'blank']:
         if (int(parms[parameter]) > 9):
             return {'status': 'error: above bound ' + parameter + ' value'} 
         elif (int(parms[parameter]) < 0):
             return {'status': 'error: below bound ' + parameter + ' value'}
         
-    if (parms['size'] == None):
-        return {'status': 'error: Null size value'}
-    try: (int(parms['size']))
-    except ValueError:
-        return {'status': 'error: non-integer size value'}
     if (int(parms['size']) > 16):
         return {'status': 'error: above bound size value'}
     elif (int(parms['size']) < 6):
@@ -96,6 +97,7 @@ def _create(parms):
     if (int(parms['dark']) == int(parms['blank'])):
         return {'status': 'error: dark is equal to blank value'}
     
+    # Dictionary foundation
     result = {'board': [int(parms['blank'])] * (int(parms['size']) ** 2), 
               'tokens': {'light': int(parms['light']), 'dark': int(parms['dark']),
                          'blank': int(parms['blank'])
@@ -103,7 +105,6 @@ def _create(parms):
               'status': 'ok',
               'integrity': ''}
 
-    
     # Setting up the board according to size
     result['board'] = __setBoard(result)
 
