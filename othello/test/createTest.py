@@ -280,7 +280,7 @@ class CreateTest(TestCase):
                               3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
                               3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
                               3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
-                    'tokens': {'light': 1, 'dark': 5, 'blank': 1},
+                    'tokens': {'light': 1, 'dark': 5, 'blank': 3},
                     'status': 'ok',
                     'integrity': 'f211a92f576794a821bb24f359739b8b42a6a16634005a1e4b32313a6575e2be'}
         self.actual = create(self.parms)
