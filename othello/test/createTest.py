@@ -308,6 +308,28 @@ class CreateTest(TestCase):
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual)
         
+    def test031_LowBoundDarkNominalLightDarkBlankSize(self):
+        self.setUp()
+        self.parms['light'] = 3
+        self.parms['dark'] = 0
+        self.parms['blank'] = 4
+        self.parms['size'] = 10
+        expected = {'board': [4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+                              4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+                              4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+                              4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+                              4, 4, 4, 4, 3, 0, 4, 4, 4, 4,
+                              4, 4, 4, 4, 0, 3, 4, 4, 4, 4,
+                              4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+                              4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+                              4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
+                              4, 4, 4, 4, 4, 4, 4, 4, 4, 4],
+                    'tokens': {'light': 3, 'dark': 0, 'blank': 4},
+                    'status': 'ok',
+                    'integrity': '7bf98e8385a158097f52361dac139bb5882f3eaa48e8146d72d65de5981d2e5e'}
+        self.actual = create(self.parms)
+        self.assertEqual(expected, self.actual)
+        
     #900 Sad Path
     def test900_AboveBoundLight(self):
         self.setUp()
