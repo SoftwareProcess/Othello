@@ -700,7 +700,7 @@ class CreateTest(TestCase):
         self.setUp()
         self.parms['dark'] = 2
         self.parms['blank'] = 2
-        expected = 'error: light is equal to dark value'
+        expected = 'error: dark is equal to blank value'
         self.actual = create(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
