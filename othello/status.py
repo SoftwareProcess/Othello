@@ -8,6 +8,9 @@ import re
 
 def __checkParms(parmsIn):
     createOutput = create(parmsIn)
+    tokenLight = createOutput.get('tokens', {}).get('light')
+    tokenDark = createOutput.get('tokens', {}).get('dark')
+    tokenBlank = createOutput.get('tokens', {}).get('blank')
     # Check board parameter
     if 'board' not in parmsIn.keys():
         return {'status': 'error: board does not exist'}
@@ -15,8 +18,11 @@ def __checkParms(parmsIn):
         return {'status': 'error: null board'}
     if len(parmsIn.get('board')) not in (36, 64, 100, 144, 196, 256):
         return {'status': 'error: uneven board'}
-    if any(i in parmsIn.get('board') for i in [int(parmsIn.get('light')), int(parmsIn.get('dark')), int(parmsIn.get('blank'))]):
-        return {'status': 'error: incorrect board value'}
+    tokenList = [tokenLight, tokenDark, tokenBlank]
+    checkBoardAndToken = all(index in tokenList for index in parmsIn.get('board'))
+    for value in parmsIn.get('board'):
+        if value in tokenList != None and not checkBoardAndToken:
+                return {'status': 'error: incorrect board value'}
     
     # Check integrity parameter
     if 'integrity' not in parmsIn.keys():
