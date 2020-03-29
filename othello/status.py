@@ -8,6 +8,7 @@ import re
 
 def __checkParms(parmsIn):
     createOutput = create(parmsIn)
+    # Check board parameter
     if 'board' not in parmsIn.keys():
         return {'status': 'error: board does not exist'}
     if parmsIn.get('board') == None:

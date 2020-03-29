@@ -256,5 +256,21 @@ class StatusTest(TestCase):
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test953_BoardWithNonTokenValues(self):
+        self.setUp()
+        self.parms['light'] = 1
+        self.parms['dark'] = 2
+        self.parms['blank'] = 3
+        self.parms['board'] = [0,0,0,0,0,0,
+                               0,0,0,0,0,0,
+                               0,0,1,2,0,0,
+                               0,0,2,1,0,0,
+                               0,0,0,0,0,0,
+                               0,0,0,0,0,0,]
+        expected = 'error: incorrect board value'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
             
             
