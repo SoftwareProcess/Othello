@@ -97,3 +97,11 @@ class StatusTest(TestCase):
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test922_NonIntegerBlank(self):
+        self.setUp()
+        self.parms['blank'] = '1E5'
+        expected = 'error: non-integer blank value'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
