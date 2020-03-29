@@ -146,3 +146,14 @@ class StatusTest(TestCase):
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()  
+        
+    def test932_MissingBoard(self):
+        self.setUp()
+        self.parms['light'] = 1
+        self.parms['dark'] = 2
+        self.parms['blank'] = 3
+        self.parms['board'] = None
+        expected = 'error: board does not exist'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()  
