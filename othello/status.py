@@ -10,6 +10,5 @@ def __validateParms(parmsIn):
 
 def _status(parms):
     parmsIn = parms
-    __validateParms(parmsIn)
-    result = {'status': 'status stub'}
+    result = __validateParms(parmsIn)
     return result
