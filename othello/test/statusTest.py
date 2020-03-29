@@ -25,3 +25,11 @@ class StatusTest(TestCase):
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+
+    def test901_BelowBoundLight(self):
+        self.setUp()
+        self.parms['light'] = '-1'
+        expected = 'error: below bound light value'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
