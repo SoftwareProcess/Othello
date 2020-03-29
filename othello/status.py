@@ -1,9 +1,10 @@
+from othello.create import _create as create
 '''
     Created on Mar 27, 2020
     
     @author:    Tae Myles
 '''
-from othello.create import _create as create
+
 def __checkParms(parmsIn):
     createOutput = create(parmsIn)
     if 'board' not in parmsIn.keys():
