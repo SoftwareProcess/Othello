@@ -81,3 +81,11 @@ class StatusTest(TestCase):
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test920_AboveBoundBlank(self):
+        self.setUp()
+        self.parms['blank'] = '10'
+        expected = 'error: above bound blank value'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
