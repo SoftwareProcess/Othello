@@ -223,6 +223,24 @@ class StatusTest(TestCase):
         expected = 'error: light is equal to dark value'
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
-        self.tearDown()  
+        self.tearDown()
+        
+    def test951_BlankEqualsLight(self):
+        self.setUp()
+        self.parms['light'] = 1
+        self.parms['dark'] = 2
+        self.parms['blank'] = 1
+        self.parms['board'] = [1,1,1,1,1,1,
+                               1,1,1,1,1,1,
+                               1,1,1,2,1,1,
+                               1,1,2,1,1,1,
+                               1,1,1,1,1,1,
+                               1,1,1,1,1,1]
+        expected = 'error: blank is equal to light value'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
+        
+        
             
             
