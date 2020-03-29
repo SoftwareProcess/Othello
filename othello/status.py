@@ -12,7 +12,7 @@ def __checkParms(parmsIn):
         return {'status': 'error: null board'}
     if len(parmsIn.get('board')) not in (36, 64, 100, 144, 196, 256):
         return {'status': 'error: uneven board'}
-    return createOutput
+    return createOutput['status']
 
 def _status(parms):
     statusParmsIn = parms
