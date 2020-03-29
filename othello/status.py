@@ -1,4 +1,5 @@
 from othello.create import _create as create
+import re
 '''
     Created on Mar 27, 2020
     
@@ -19,7 +20,10 @@ def __checkParms(parmsIn):
         return {'status': 'error: short integrity'}
     if len(parmsIn.get('integrity')) > 64:
         return {'status': 'error: long integrity'}
-    
+    regex = re.compile('`~!@#$%^&*()_+-={}[]\|<>,./?')
+    if regex.search(parmsIn.get('integrity') != None):
+        {'status': 'error: non hex characters'}
+        
     return createOutput
 
 def _status(parms):
