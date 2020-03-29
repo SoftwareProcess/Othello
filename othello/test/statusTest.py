@@ -42,3 +42,20 @@ class StatusTest(TestCase):
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
         
+    def test903_NullLight(self):
+        self.setUp()
+        self.parms['light'] = None
+        expected = 'error: Null light value'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
+        
+    def test910_AboveBoundDark(self):
+        self.setUp()
+        self.parms['dark'] = '10'
+        expected = 'error: above bound dark value'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
+        
+        
