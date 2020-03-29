@@ -21,7 +21,7 @@ def __checkParms(parmsIn):
     if len(parmsIn.get('integrity')) > 64:
         return {'status': 'error: long integrity'}
     if not re.match('^[a-zA-Z0-9]*$', parmsIn.get('integrity')):
-        {'status': 'error: non hex characters'}
+        return {'status': 'error: non hex characters'}
     return createOutput
 
 def _status(parms):
