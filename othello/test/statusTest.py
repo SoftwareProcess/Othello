@@ -33,3 +33,12 @@ class StatusTest(TestCase):
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test902_NonIntegerLight(self):
+        self.setUp()
+        self.parms['light'] = 'X'
+        expected = 'error: non-integer light value'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
+        
