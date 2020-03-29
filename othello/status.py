@@ -16,7 +16,8 @@ def __checkParms(parmsIn):
     # Check integrity parameter
     if len(parmsIn.get('integrity')) < 64:
         return {'status': 'error: short integrity'}
-    
+    if len(parmsIn.get('integrity')) > 64:
+        return {'status': 'error: long integrity'}
     return createOutput
 
 def _status(parms):
