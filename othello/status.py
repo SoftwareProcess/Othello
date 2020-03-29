@@ -10,8 +10,7 @@ def _status(parms):
     createOutput = create(statusParmsIn)
     if parms.get('board') == None:
         return {'status': 'error: board does not exist'}
-    if "board" in createOutput:
-        if len(parms.get('board')) not in (36, 64, 100, 144, 196, 256):
-            return {'status': 'error: uneven board'}
+    if len(parms.get('board')) not in (36, 64, 100, 144, 196, 256):
+        return {'status': 'error: uneven board'}
     return createOutput
 
