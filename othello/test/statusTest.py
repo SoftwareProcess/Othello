@@ -65,3 +65,11 @@ class StatusTest(TestCase):
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test912_NonIntegerDark(self):
+        self.setUp()
+        self.parms['dark'] = '1.2'
+        expected = 'error: non-integer dark value'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
