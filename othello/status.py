@@ -5,7 +5,7 @@
 '''
 def __validateParms(parmsIn):
     
-    if parmsIn['light'] > 9:
+    if int(parmsIn['light']) > 9:
         return {'status': 'error: above bound light value in board'}
 
 def _status(parms):
