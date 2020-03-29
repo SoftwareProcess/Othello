@@ -8,8 +8,7 @@ from othello.create import _create as create
 def _status(parms):
     statusParmsIn = parms
     createOutput = create(statusParmsIn)
-    try: parms.get('board')
-    except KeyError: 
+    if 'board' not in parms.keys():
         return {'status': 'error: board does not exist'}
     if parms.get('board') == None:
         return {'status': 'error: null board'}
