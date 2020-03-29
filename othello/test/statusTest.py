@@ -73,3 +73,11 @@ class StatusTest(TestCase):
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test913_NullDark(self):
+        self.setUp()
+        self.parms['dark'] = None
+        expected = 'error: Null dark value'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
