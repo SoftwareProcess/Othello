@@ -16,6 +16,8 @@ def __checkParms(parmsIn):
         return {'status': 'error: uneven board'}
     
     # Check integrity parameter
+    if 'integrity' not in parmsIn.keys():
+        return {'status': 'error: integrity does not exist'}
     if len(parmsIn.get('integrity')) < 64:
         return {'status': 'error: short integrity'}
     if len(parmsIn.get('integrity')) > 64:
