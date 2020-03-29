@@ -3,12 +3,9 @@
     
     @author:    Tae Myles
 '''
-def __validateParms(parmsIn):
-    
-    if int(parmsIn['light']) > 9:
-        return {'status': 'error: above bound light value in board'}
+from othello.create import _create as create
 
 def _status(parms):
-    parmsIn = parms
-    result = __validateParms(parmsIn)
+    statusParmsIn = parms
+    result = create(statusParmsIn)
     return result

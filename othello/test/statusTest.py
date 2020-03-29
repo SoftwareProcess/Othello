@@ -7,7 +7,7 @@ from unittest import TestCase
 from othello.status import _status as status
 
 
-class Test(TestCase):
+class StatusTest(TestCase):
     def setUp(self):
         self.parms = {'op': 'status', 'light': '1', 'dark': '2',
             'board': '[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0',
@@ -21,7 +21,7 @@ class Test(TestCase):
     def test900_AboveBoundLight(self):
         self.setUp()
         self.parms['light'] = '10'
-        expected = 'error: above bound light value in board'
+        expected = 'error: above bound light value'
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
