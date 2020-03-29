@@ -58,4 +58,10 @@ class StatusTest(TestCase):
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
         
-        
+    def test911_BelowBoundDark(self):
+        self.setUp()
+        self.parms['dark'] = '-1'
+        expected = 'error: below bound dark value'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
