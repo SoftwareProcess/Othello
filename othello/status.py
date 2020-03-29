@@ -10,6 +10,6 @@ def _status(parms):
     createOutput = create(statusParmsIn)
     if "board" in createOutput:
         if len(parms.get('board')) not in (36, 64, 100, 144, 196, 256):
-            return {'status': 'error: non-square board'}
+            return {'status': 'error: uneven board'}
     return createOutput
 
