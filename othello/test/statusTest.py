@@ -119,7 +119,11 @@ class StatusTest(TestCase):
         self.parms['light'] = 1
         self.parms['dark'] = 2
         self.parms['blank'] = 3
-        self.parms['board'] = [3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,2,3,3,3,3,2,1,3,3,3,3,3,3,3,3,3,3,3,3,3]
+        self.parms['board'] = [3,3,3,3,3,3,3,3,
+                               3,3,3,3,3,3,1,2,
+                               3,3,3,3,2,1,3,3,
+                               3,3,3,3,3,3,3,3,
+                               3,3,3]
         expected = 'error: uneven board'
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
