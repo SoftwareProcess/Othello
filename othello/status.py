@@ -18,6 +18,8 @@ def __checkParms(parmsIn):
     # Check integrity parameter
     if 'integrity' not in parmsIn.keys():
         return {'status': 'error: integrity does not exist'}
+    if parmsIn.get('integrity') == None:
+        return {'status': 'error: null integrity'}
     if len(parmsIn.get('integrity')) < 64:
         return {'status': 'error: short integrity'}
     if len(parmsIn.get('integrity')) > 64:
