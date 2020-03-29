@@ -8,7 +8,7 @@ from othello.create import _create as create
 def _status(parms):
     statusParmsIn = parms
     createOutput = create(statusParmsIn)
-    if len(parms.get('board')) == None:
+    if parms.get('board') == None:
         return {'status': 'error: board does not exist'}
     if "board" in createOutput:
         if len(parms.get('board')) not in (36, 64, 100, 144, 196, 256):
