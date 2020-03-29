@@ -200,5 +200,13 @@ class StatusTest(TestCase):
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test944_NullIntegrity(self):
+        self.setUp()
+        self.parms['integrity'] = None
+        expected = 'error: null integrity'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
             
             
