@@ -192,6 +192,13 @@ class StatusTest(TestCase):
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
-            
+
+    def test943_MissingIntegrity(self):
+        self.setUp()
+        del self.parms['integrity']
+        expected = 'error: integrity does not exist'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
             
             
