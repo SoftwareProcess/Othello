@@ -169,7 +169,7 @@ class StatusTest(TestCase):
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()  
         
-    def test940_shortIntegrity(self):
+    def test940_ShortIntegrity(self):
         self.setUp()
         self.parms['integrity'] = 'f01977c17f801c43eeb13fb9f74a49bd0c761db3cdffe01510f47ddd23ab465'
         expected = 'error: short integrity'
@@ -177,10 +177,10 @@ class StatusTest(TestCase):
         self.assertEqual(expected, self.actual['status'])
         self.tearDown() 
         
-    def test941_longIntegrity(self):
+    def test941_LongIntegrity(self):
         self.setUp()
         self.parms['integrity'] = 'f01977c17f801c43eeb13fb9f74a49bd0c761db3cdffe01510f47ddd23ab465a00'
         expected = 'error: long integrity'
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
-        self.tearDown()   
+        self.tearDown()
