@@ -119,7 +119,8 @@ class StatusTest(TestCase):
         self.parms['light'] = 1
         self.parms['dark'] = 2
         self.parms['blank'] = 3
-        expected = 'error: Null blank value'
+        self.parms['size'] = 6
+        expected = 'error: non-square board'
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['board'])
         self.tearDown()   
