@@ -120,7 +120,7 @@ class StatusTest(TestCase):
         self.parms['dark'] = 2
         self.parms['blank'] = 3
         self.parms['board'] = [3,3,3,3,3,3,3,3,3,3,3,3,3,3,1,2,3,3,3,3,2,1,3,3,3,3,3,3,3,3,3,3,3,3,3]
-        expected = 'error: non-square board'
+        expected = 'error: uneven board'
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown() 
@@ -138,7 +138,7 @@ class StatusTest(TestCase):
                                3,3,3,3,3,3,
                                3,3,3,3,3,3,
                                3,3,3,3,3,3,3]
-        expected = 'error: odd x odd board'
+        expected = 'error: uneven board'
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()  
