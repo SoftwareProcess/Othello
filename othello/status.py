@@ -54,8 +54,8 @@ def __validateIntegrityParms(integrityParmsIn):
     for index in integrityParmsIn['board']:
         message = message + str(index)
 
-    message = message + "/" + str(integrityParmsIn['light']) + "/" +
-        str(integrityParmsIn['dark']) + "/" + str(integrityParmsIn['blank']) +
+    message = message + "/" + str(integrityParmsIn['light']) + "/" + \
+        str(integrityParmsIn['dark']) + "/" + str(integrityParmsIn['blank']) + \
         "/" + str(integrityParmsIn['dark'])
     sha256HexDigest = hashlib.sha256(message.encode('utf-8')).hexdigest()
     if integrityParmsIn['integrity'] != sha256HexDigest
