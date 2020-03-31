@@ -143,12 +143,12 @@ class StatusTest(TestCase):
         self.parms['light'] = '5'
         self.parms['dark'] = '6'
         self.parms['blank'] = '0'
-        self.parms['board'] = [9, 9, 9, 9, 9, 9,
-                               9, 9, 9, 9, 9, 9,
-                               9, 9, 5, 6, 9, 9, 
-                               9, 9, 6, 5, 9, 9, 
-                               9, 9, 9, 9, 9, 9, 
-                               9, 9, 9, 9, 9, 9]
+        self.parms['board'] = [0, 0, 0, 0, 0, 0,
+                               0, 0, 0, 0, 0, 0,
+                               0, 0, 5, 6, 0, 0, 
+                               0, 0, 6, 5, 0, 0, 
+                               0, 0, 0, 0, 0, 0, 
+                               0, 0, 0, 0, 0, 0]
         self.parms['integrity'] = '062f219e852404144cd7967bcbac5d5d82c151697d8eacfd8c29779acbc58b19'
         expected = 'ok'
         self.actual = status(self.parms)
