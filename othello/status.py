@@ -1,4 +1,3 @@
-from othello.create import _create as create
 import re
 '''
     Created on Mar 27, 2020
