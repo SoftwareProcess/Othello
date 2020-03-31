@@ -19,9 +19,9 @@ def __checkParms(parmsIn):
     if len(parmsIn.get('board')) not in (36, 64, 100, 144, 196, 256):
         return {'status': 'error: uneven board'}
     tokenList = [tokenLight, tokenDark, tokenBlank]
-    checkBoardAndToken = all(index in tokenList for index in parmsIn.get('board'))
+    checkBoardAndTokenList = all(index in tokenList for index in parmsIn.get('board'))
     for value in parmsIn.get('board'):
-        if value in tokenList != None and not checkBoardAndToken:
+        if value in tokenList != None and not checkBoardAndTokenList:
                 return {'status': 'error: incorrect board value'}
     
     # Check integrity parameter
