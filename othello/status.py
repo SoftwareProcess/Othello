@@ -4,6 +4,7 @@ import re
     
     @author:    Tae Myles
 '''
+from othello.create import __sha256HexDigest
 def __validateTokenBoundaryAndType(tokenParmsIn):
     for parameter in ['light', 'dark', 'blank']:
         if (tokenParmsIn[parameter] == None):
@@ -49,6 +50,16 @@ def __validateIntegrityParms(integrityParmsIn):
         return {'status': 'error: long integrity'}
     if not re.match('^[a-zA-Z0-9]*$', integrityParmsIn.get('integrity')):
         return {'status': 'error: non hex characters'}
+    message = ''
+    for index in integrityParmsIn['board']:
+        message = message + str(index)
+
+    message = message + "/" + str(integrityParmsIn['light']) + "/" +
+        str(integrityParmsIn['dark']) + "/" + str(integrityParmsIn['blank']) +
+        "/" + str(integrityParmsIn['dark'])
+    sha256HexDigest = hashlib.sha256(message.encode('utf-8')).hexdigest()
+    if integrityParmsIn['integrity'] != sha256HexDigest
+        return  {'status': 'error: invalid integrity'}
     return integrityParmsIn
 
 def _status(parms):
