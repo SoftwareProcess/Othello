@@ -103,6 +103,23 @@ class StatusTest(TestCase):
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test031_HighBoundDarkNominalLightBlankBoardIntegrity(self):
+        self.setUp()
+        self.parms['light'] = '5'
+        self.parms['dark'] = '9'
+        self.parms['blank'] = '3'
+        self.parms['board'] = [3, 3, 3, 3, 3, 3,
+                               3, 3, 3, 3, 3, 3, 
+                               3, 3, 5, 9, 3, 3, 
+                               3, 3, 9, 5, 3, 3, 
+                               3, 3, 3, 3, 3, 3, 
+                               3, 3, 3, 3, 3, 3]
+        self.parms['integrity'] = '34932b7f4bbafed18cf99e367e29407e6aae8b49b2ced711f31e429e7efc2a12'
+        expected = 'ok'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
 
     # Sad path
     def test900_AboveBoundLight(self):
