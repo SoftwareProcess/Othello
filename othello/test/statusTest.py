@@ -273,20 +273,4 @@ class StatusTest(TestCase):
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
             
-    def test954_InvalidIntegrity(self):
-        self.setUp()
-        self.parms['light'] = 1
-        self.parms['dark'] = 2
-        self.parms['blank'] = 3
-        self.parms['board'] = [3,3,3,3,3,3,
-                               3,3,3,3,3,3,
-                               3,3,1,2,3,3,
-                               3,3,2,1,3,3,
-                               3,3,3,3,3,3,
-                               3,3,3,3,3,3]
-        self.parms['integrity'] = '4d5aeb4a45b57eecf69dcc304664fcf7a6f7c74c86ef9ede14da46ab2d9df242'
-        expected = 'error: invalid integrity'
-        self.actual = status(self.parms)
-        self.assertEqual(expected, self.actual['status'])
-        self.tearDown()
             

@@ -5,41 +5,58 @@ import re
     
     @author:    Tae Myles
 '''
-
-def __checkParms(parmsIn):
-    createOutput = create(parmsIn)
-    tokenLight = createOutput.get('tokens', {}).get('light')
-    tokenDark = createOutput.get('tokens', {}).get('dark')
-    tokenBlank = createOutput.get('tokens', {}).get('blank')
-    # Check board parameter
-    if 'board' not in parmsIn.keys():
+def __validateTokenBoundaryAndType(tokenParmsIn):
+    for parameter in ['light', 'dark', 'blank']:
+        if (tokenParmsIn[parameter] == None):
+            return {'status': 'error: Null ' + parameter +  ' value'}
+        try: int(tokenParmsIn[parameter])
+        except ValueError:
+            return {'status': 'error: non-integer ' + parameter + ' value'}
+        if (int(tokenParmsIn[parameter]) > 9):
+            return {'status': 'error: above bound ' + parameter + ' value'} 
+        if (int(tokenParmsIn[parameter]) < 0):
+            return {'status': 'error: below bound ' + parameter + ' value'}
+    
+    if (int(tokenParmsIn['light']) == int(tokenParmsIn['dark'])):
+        return {'status': 'error: light is equal to dark value'}
+    if (int(tokenParmsIn['light']) == int(tokenParmsIn['blank'])):
+        return {'status': 'error: blank is equal to light value'}
+    if (int(tokenParmsIn['dark']) == int(tokenParmsIn['blank'])):
+        return {'status': 'error: dark is equal to blank value'}
+    return tokenParmsIn
+    
+def __validateBoardParms(boardParmsIn):
+    if 'board' not in boardParmsIn.keys():
         return {'status': 'error: board does not exist'}
-    if parmsIn.get('board') == None:
+    if boardParmsIn.get('board') == None:
         return {'status': 'error: null board'}
-    if len(parmsIn.get('board')) not in (36, 64, 100, 144, 196, 256):
+    if len(boardParmsIn.get('board')) not in (36, 64, 100, 144, 196, 256):
         return {'status': 'error: uneven board'}
-    tokenList = [tokenLight, tokenDark, tokenBlank]
-    checkBoardAndTokenList = all(index in tokenList for index in parmsIn.get('board'))
-    for value in parmsIn.get('board'):
+    tokenList = [int(boardParmsIn['light']), int(boardParmsIn['dark']), int(boardParmsIn['blank'])]
+    checkBoardAndTokenList = all(index in tokenList for index in boardParmsIn.get('board'))
+    for value in boardParmsIn.get('board'):
         if value in tokenList != None and not checkBoardAndTokenList:
                 return {'status': 'error: incorrect board value'}
+    return boardParmsIn
     
-    # Check integrity parameter
-    if 'integrity' not in parmsIn.keys():
+def __validateIntegrityParms(integrityParmsIn):
+    if 'integrity' not in integrityParmsIn.keys():
         return {'status': 'error: integrity does not exist'}
-    if parmsIn.get('integrity') == None:
+    if integrityParmsIn.get('integrity') == None:
         return {'status': 'error: null integrity'}
-    if len(parmsIn.get('integrity')) < 64:
+    if len(integrityParmsIn.get('integrity')) < 64:
         return {'status': 'error: short integrity'}
-    if len(parmsIn.get('integrity')) > 64:
+    if len(integrityParmsIn.get('integrity')) > 64:
         return {'status': 'error: long integrity'}
-    if not re.match('^[a-zA-Z0-9]*$', parmsIn.get('integrity')):
+    if not re.match('^[a-zA-Z0-9]*$', integrityParmsIn.get('integrity')):
         return {'status': 'error: non hex characters'}
-    
-    return createOutput
+    return integrityParmsIn
 
 def _status(parms):
-    statusParmsIn = parms
-    result = __checkParms(statusParmsIn)
+    result = __validateTokenBoundaryAndType(parms)
+    if 'status' not in result:
+        result = __validateBoardParms(parms)
+        if 'status' not in result:
+            result = __validateIntegrityParms(parms)
     return result
 
