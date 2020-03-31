@@ -1,4 +1,5 @@
 import re
+import hashlib
 '''
     Created on Mar 27, 2020
     
@@ -58,7 +59,7 @@ def __validateIntegrityParms(integrityParmsIn):
         str(integrityParmsIn['dark']) + "/" + str(integrityParmsIn['blank']) + \
         "/" + str(integrityParmsIn['dark'])
     sha256HexDigest = hashlib.sha256(message.encode('utf-8')).hexdigest()
-    if integrityParmsIn['integrity'] != sha256HexDigest
+    if integrityParmsIn['integrity'] != sha256HexDigest:
         return  {'status': 'error: invalid integrity'}
     return integrityParmsIn
 
