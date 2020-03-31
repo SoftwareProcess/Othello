@@ -183,7 +183,7 @@ class StatusTest(TestCase):
                                0, 0, 6, 5, 0, 0, 
                                0, 0, 0, 0, 0, 0, 
                                0, 0, 0, 0, 0, 0]
-        self.parms['integrity'] = '5b698f38d9d1c1754df196ee688f3900ceba9d074cb74b5e17c19a197b69bf02'
+        self.parms['integrity'] = '062f219e852404144cd7967bcbac5d5d82c151697d8eacfd8c29779acbc58b19'
         expected = 'ok'
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
