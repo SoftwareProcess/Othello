@@ -56,11 +56,15 @@ def __validateIntegrityParms(integrityParmsIn):
     darkCount = 0
     for value in integrityParmsIn['board']:
         if (integrityParmsIn['light'] == value):
-            lightCount = lightCount + value
+            lightCount = lightCount + 1
         if (integrityParmsIn['dark'] == value):
-            darkCount = darkCount + value
+            darkCount = darkCount + 1
     if lightCount == darkCount:
-       tokenToPlace = integrityParmsIn['dark']
+        tokenToPlace = integrityParmsIn['dark']
+    if lightCount < darkCount:
+        tokenToPlace = integrityParmsIn['light']
+    if lightCount >= darkCount:
+        tokenToPlace = integrityParmsIn['dark']
        
        
     for index in integrityParmsIn['board']:
@@ -68,7 +72,7 @@ def __validateIntegrityParms(integrityParmsIn):
     
     message = message + "/" + str(integrityParmsIn['light']) + "/" + \
         str(integrityParmsIn['dark']) + "/" + str(integrityParmsIn['blank']) + \
-        "/" + str(integrityParmsIn['dark'])
+        "/" + str(tokenToPlace)
     sha256HexDigest = hashlib.sha256(message.encode('utf-8')).hexdigest()
     if integrityParmsIn['integrity'] != sha256HexDigest:
         return  {'status': 'error: invalid integrity'}
