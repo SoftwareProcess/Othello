@@ -5,7 +5,6 @@ import hashlib
     
     @author:    Tae Myles
 '''
-from othello.create import __sha256HexDigest
 def __validateTokenBoundaryAndType(tokenParmsIn):
     for parameter in ['light', 'dark', 'blank']:
         if (tokenParmsIn[parameter] == None):
@@ -54,7 +53,7 @@ def __validateIntegrityParms(integrityParmsIn):
     message = ''
     for index in integrityParmsIn['board']:
         message = message + str(index)
-
+        
     message = message + "/" + str(integrityParmsIn['light']) + "/" + \
         str(integrityParmsIn['dark']) + "/" + str(integrityParmsIn['blank']) + \
         "/" + str(integrityParmsIn['dark'])
