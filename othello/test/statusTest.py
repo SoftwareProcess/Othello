@@ -53,7 +53,7 @@ class StatusTest(TestCase):
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
         
-    def test030_LowBoundLightNominalLightDarkBlankBoardIntegrity(self):
+    def test021_LowBoundLightNominalLightDarkBlankBoardIntegrity(self):
         self.setUp()
         self.parms['light'] = '0'
         self.parms['dark'] = '2'
@@ -65,6 +65,23 @@ class StatusTest(TestCase):
                                1, 1, 1, 1, 1, 1, 
                                1, 1, 1, 1, 1, 1]
         self.parms['integrity'] = '1b7e612b959852acbaf6b55d3f6b8dab2cdc32248a58a89dcf022ae80e5b36de'
+        expected = 'ok'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
+    
+    def test022_MissingLightNominalLightDarkBlankBoardIntegrity(self):
+        self.setUp()
+        del self.parms['light']
+        self.parms['dark'] = '2'
+        self.parms['blank'] = '3'
+        self.parms['board'] = [3, 3, 3, 3, 3, 3,
+                               3, 3, 3, 3, 3, 3, 
+                               3, 3, 1, 2, 3, 3, 
+                               3, 3, 2, 1, 3, 3, 
+                               3, 3, 3, 3, 3, 3, 
+                               3, 3, 3, 3, 3, 3]
+        self.parms['integrity'] = 'f01977c17f801c43eeb13fb9f74a49bd0c761db3cdffe01510f47ddd23ab465a'
         expected = 'ok'
         self.actual = status(self.parms)
         self.assertEqual(expected, self.actual['status'])
