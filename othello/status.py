@@ -50,10 +50,22 @@ def __validateIntegrityParms(integrityParmsIn):
         return {'status': 'error: long integrity'}
     if not re.match('^[a-zA-Z0-9]*$', integrityParmsIn.get('integrity')):
         return {'status': 'error: non hex characters'}
+    
     message = ''
+    lightCount = 0
+    darkCount = 0
+    for value in integrityParmsIn['board']:
+        if (integrityParmsIn['light'] == value):
+            lightCount = lightCount + value
+        if (integrityParmsIn['dark'] == value):
+            darkCount = darkCount + value
+    if lightCount == darkCount:
+       tokenToPlace = integrityParmsIn['dark']
+       
+       
     for index in integrityParmsIn['board']:
         message = message + str(index)
-        
+    
     message = message + "/" + str(integrityParmsIn['light']) + "/" + \
         str(integrityParmsIn['dark']) + "/" + str(integrityParmsIn['blank']) + \
         "/" + str(integrityParmsIn['dark'])
@@ -61,6 +73,7 @@ def __validateIntegrityParms(integrityParmsIn):
     if integrityParmsIn['integrity'] != sha256HexDigest:
         return  {'status': 'error: invalid integrity'}
     return integrityParmsIn
+
 
 def _status(parms):
     if ('light' not in parms.keys()):
