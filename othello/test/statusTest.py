@@ -172,7 +172,40 @@ class StatusTest(TestCase):
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
 
+    def test042_MissingBlankNominalLightDarkBoardIntegrity(self):
+        self.setUp()
+        self.parms['light'] = '5'
+        self.parms['dark'] = '6'
+        del self.parms['blank']
+        self.parms['board'] = [0, 0, 0, 0, 0, 0,
+                               0, 0, 0, 0, 0, 0, 
+                               0, 0, 5, 6, 0, 0, 
+                               0, 0, 6, 5, 0, 0, 
+                               0, 0, 0, 0, 0, 0, 
+                               0, 0, 0, 0, 0, 0]
+        self.parms['integrity'] = '5b698f38d9d1c1754df196ee688f3900ceba9d074cb74b5e17c19a197b69bf02'
+        expected = 'ok'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
 
+    def test050_LowBoundSizeBoardNominalLightDarkBlankIntegrity(self):
+        self.setUp()
+        self.parms['light'] = '1'
+        self.parms['dark'] = '2'
+        self.parms['blank'] = '0'
+        self.parms['board'] = [0, 0, 0, 0, 0, 0,
+                               0, 0, 0, 0, 0, 0, 
+                               0, 0, 1, 2, 0, 0, 
+                               0, 0, 2, 1, 0, 0, 
+                               0, 0, 0, 0, 0, 0, 
+                               0, 0, 0, 0, 0, 0]
+        self.parms['integrity'] = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
+        expected = 'ok'
+        self.actual = status(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
+        
     # Sad path
     def test900_AboveBoundLight(self):
         self.setUp()
