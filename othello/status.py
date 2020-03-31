@@ -68,5 +68,7 @@ def _status(parms):
         result = __validateBoardParms(parms)
         if 'status' not in result:
             result = __validateIntegrityParms(parms)
+            if 'status' not in result:
+                result = {'status': 'ok'}
     return result
 
