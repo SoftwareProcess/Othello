@@ -104,7 +104,7 @@ def __checkLight(boardParm):
     if blankCounter <= 4 and lightCounter < darkCounter-4:
         result = {'status': 'light'} 
     return result 
-             
+
 def _status(parms):
     if ('light' not in parms.keys()):
         parms['light'] = 1
