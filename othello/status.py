@@ -139,7 +139,7 @@ def _status(parms):
                 result = __checkDark(parms)
                 if result['status'] != 'dark':
                     result = __checkLight(parms)
-                    if result['status'] != ['light']:
+                    if result['status'] != 'light':
                         result = __checkEnd(parms)    
     return result
 
