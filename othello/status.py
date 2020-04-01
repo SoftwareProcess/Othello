@@ -69,12 +69,11 @@ def __validateIntegrityParms(integrityParmsIn):
     lightSha256HexDigest = hashlib.sha256(lightMessage.encode('utf-8')).hexdigest()
     
     if integrityParmsIn['integrity'] == lightSha256HexDigest:
-        encryption = lightSha256HexDigest
-    elif integrityParmsIn['integrity'] == darkSha256HexDigest:
-        encryption = darkSha256HexDigest
-    else: 
+        return lightSha256HexDigest
+    if integrityParmsIn['integrity'] == darkSha256HexDigest:
+        return darkSha256HexDigest
+    else:
         return  {'status': 'error: invalid integrity'}
-    return encryption
 
 # Check if dark can be only be placed on the board
 def __checkDark(boardParm):
