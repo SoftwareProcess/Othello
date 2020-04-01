@@ -85,7 +85,7 @@ def __checkDark(boardParm):
             darkCounter = darkCounter + 1  
         if index == int(boardParm['blank']):
             blankCounter = blankCounter + 1
-    if blankCounter <= 4 and lightCounter-4 > darkCounter:
+    if blankCounter <= 5 and lightCounter-4 > darkCounter:
         result = {'status': 'dark'} 
     return result  
       
@@ -101,8 +101,24 @@ def __checkLight(boardParm):
             darkCounter = darkCounter + 1  
         if index == int(boardParm['blank']):
             blankCounter = blankCounter + 1
-    if blankCounter <= 4 and lightCounter < darkCounter-4:
+    if blankCounter <= 5 and lightCounter < darkCounter-4:
         result = {'status': 'light'} 
+    return result 
+
+def __checkEnd(boardParm):
+    result = {'status': 'ok'}
+    lightCounter = 0
+    darkCounter = 0
+    blankCounter = 0
+    for index in boardParm['board']:
+        if index == int(boardParm['light']):
+            lightCounter = lightCounter + 1
+        if index == int(boardParm['dark']):
+            darkCounter = darkCounter + 1  
+        if index == int(boardParm['blank']):
+            blankCounter = blankCounter + 1
+    if blankCounter == 0:
+        result = {'status': 'end'}
     return result 
 
 def _status(parms):
@@ -123,7 +139,7 @@ def _status(parms):
                 result = __checkDark(parms)
                 if result['status'] != 'dark':
                     result = __checkLight(parms)
-    
-    
+                    if result['status'] != ['light']:
+                        result = __checkEnd(parms)    
     return result
 
