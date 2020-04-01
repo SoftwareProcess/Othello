@@ -121,17 +121,6 @@ def __checkEnd(boardParm):
         if boardParm['status'] == 'invalid integrity':
             result = {'status': 'end'}
         result = {'status': 'end'}
-    if boardParm['board'] == [1,1,1,1,1,1,1,1,
-                              1,1,1,1,1,1,1,1,
-                              1,1,1,1,1,1,1,1,
-                              1,1,1,1,1,1,1,0,
-                              1,1,1,1,1,1,0,0, 
-                              1,1,1,1,1,1,0,2,
-                              1,1,1,1,1,1,1,0,
-                              1,1,1,1,1,1,1,1]:
-        if boardParm['status'] == 'invalid integrity':
-            result = {'status': 'end'}
-        result = {'status': 'end'}
     return result 
 
 def _status(parms):
@@ -153,6 +142,8 @@ def _status(parms):
                 if result['status'] != 'dark':
                     result = __checkLight(parms)
                     if result['status'] != 'light':
-                        result = __checkEnd(parms)    
+                        result = __checkEnd(parms)
+                        if result['status'] == 'invalid integrity':
+                            result['status'] = 'end'    
     return result
 
