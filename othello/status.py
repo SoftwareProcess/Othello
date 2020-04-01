@@ -118,8 +118,6 @@ def __checkEnd(boardParm):
         if index == int(boardParm['blank']):
             blankCounter = blankCounter + 1
     if blankCounter == 0:
-        if boardParm['status'] == 'invalid integrity':
-            result = {'status': 'end'}
         result = {'status': 'end'}
     return result 
 
@@ -142,8 +140,6 @@ def _status(parms):
                 if result['status'] != 'dark':
                     result = __checkLight(parms)
                     if result['status'] != 'light':
-                        result = __checkEnd(parms)
-                        if result['status'] == 'invalid integrity':
-                            result['status'] = 'end'    
+                        result = __checkEnd(parms)    
     return result
 
