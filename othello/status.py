@@ -5,6 +5,7 @@ import hashlib
     
     @author:    Tae Myles
 '''
+# Check Token parameters
 def __validateTokenBoundaryAndType(tokenParmsIn):
     for parameter in ['light', 'dark', 'blank']:
         if (tokenParmsIn[parameter] == None):
@@ -25,6 +26,7 @@ def __validateTokenBoundaryAndType(tokenParmsIn):
         return {'status': 'error: dark is equal to blank value'}
     return tokenParmsIn
     
+# Check board parameters
 def __validateBoardParms(boardParmsIn):
     if 'board' not in boardParmsIn.keys():
         return {'status': 'error: board does not exist'}
@@ -39,6 +41,7 @@ def __validateBoardParms(boardParmsIn):
                 return {'status': 'error: incorrect board value'}
     return boardParmsIn
     
+# Check integrity parameters
 def __validateIntegrityParms(integrityParmsIn):
     if 'integrity' not in integrityParmsIn.keys():
         return {'status': 'error: integrity does not exist'}
@@ -73,6 +76,7 @@ def __validateIntegrityParms(integrityParmsIn):
         return  {'status': 'error: invalid integrity'}
     return encryption
 
+# Check if dark can be only be placed on the board
 def __checkDark(boardParm):
     result = {'status': 'ok'}
     lightCounter = 0
@@ -104,7 +108,8 @@ def __checkDark(boardParm):
         if blankCounter <= 5 and lightCounter-60 > darkCounter:
             result = {'status': 'dark'} 
     return result  
-      
+   
+# Check if light can be only be placed on the board   
 def __checkLight(boardParm):
     result = {'status': 'ok'}
     lightCounter = 0
@@ -137,6 +142,7 @@ def __checkLight(boardParm):
             result = {'status': 'light'} 
     return result 
 
+# Check if neither light or dark can be placed on the board
 def __checkEnd(boardParm):
     result = {'status': 'ok'}
     lightCounter = 0
@@ -153,6 +159,7 @@ def __checkEnd(boardParm):
         result = {'status': 'end'}
     return result 
 
+# Checks the status of the board
 def _status(parms):
     if ('light' not in parms.keys()):
         parms['light'] = 1
