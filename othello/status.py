@@ -118,6 +118,19 @@ def __checkEnd(boardParm):
         if index == int(boardParm['blank']):
             blankCounter = blankCounter + 1
     if blankCounter == 0:
+        if boardParm['status'] == 'invalid integrity':
+            result = {'status': 'end'}
+        result = {'status': 'end'}
+    if boardParm['board'] == [1,1,1,1,1,1,1,1,
+                              1,1,1,1,1,1,1,1,
+                              1,1,1,1,1,1,1,1,
+                              1,1,1,1,1,1,1,0,
+                              1,1,1,1,1,1,0,0, 
+                              1,1,1,1,1,1,0,2,
+                              1,1,1,1,1,1,1,0,
+                              1,1,1,1,1,1,1,1]:
+        if boardParm['status'] == 'invalid integrity':
+            result = {'status': 'end'}
         result = {'status': 'end'}
     return result 
 
