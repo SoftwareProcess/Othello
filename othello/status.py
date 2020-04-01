@@ -123,7 +123,7 @@ def _status(parms):
             if 'status' not in result:
                 result = {'status': 'ok'}
                 result = __checkDark(parms)
-                if result['status'] != 'dark'
+                if result['status'] != 'dark':
                     result = __checkLight(parms)
                 
     return result
