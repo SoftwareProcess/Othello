@@ -52,31 +52,26 @@ def __validateIntegrityParms(integrityParmsIn):
         return {'status': 'error: non hex characters'}
     
     message = ''
-    lightCount = 0
-    darkCount = 0
-    for value in integrityParmsIn['board']:
-        if (integrityParmsIn['light'] == value):
-            lightCount = lightCount + 1
-        if (integrityParmsIn['dark'] == value):
-            darkCount = darkCount + 1
-    if lightCount == darkCount:
-        tokenToPlace = integrityParmsIn['dark']
-    if lightCount < darkCount:
-        tokenToPlace = integrityParmsIn['light']
-    if lightCount >= darkCount:
-        tokenToPlace = integrityParmsIn['dark']
-       
-       
     for index in integrityParmsIn['board']:
         message = message + str(index)
     
-    message = message + "/" + str(integrityParmsIn['light']) + "/" + \
+    darkMessage = message + "/" + str(integrityParmsIn['light']) + "/" + \
         str(integrityParmsIn['dark']) + "/" + str(integrityParmsIn['blank']) + \
-        "/" + str(tokenToPlace)
-    sha256HexDigest = hashlib.sha256(message.encode('utf-8')).hexdigest()
-    if integrityParmsIn['integrity'] != sha256HexDigest:
+        "/" + str(integrityParmsIn['dark'])
+    darkSha256HexDigest = hashlib.sha256(darkMessage.encode('utf-8')).hexdigest()
+    
+    lightMessage = message + "/" + str(integrityParmsIn['light']) + "/" + \
+        str(integrityParmsIn['dark']) + "/" + str(integrityParmsIn['blank']) + \
+        "/" + str(integrityParmsIn['light'])
+    lightSha256HexDigest = hashlib.sha256(lightMessage.encode('utf-8')).hexdigest()
+    
+    if integrityParmsIn['integrity'] == lightSha256HexDigest:
+        encryption = lightSha256HexDigest
+    elif integrityParmsIn['integrity'] == darkSha256HexDigest:
+        encryption = darkSha256HexDigest
+    else: 
         return  {'status': 'error: invalid integrity'}
-    return integrityParmsIn
+    return encryption
 
 
 def _status(parms):
@@ -94,5 +89,6 @@ def _status(parms):
             result = __validateIntegrityParms(parms)
             if 'status' not in result:
                 result = {'status': 'ok'}
+                
     return result
 
