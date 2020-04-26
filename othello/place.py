@@ -5,6 +5,8 @@
 '''
 def __validateTokenBoundaryAndType(tokenParmsIn):
     for parameter in ['light']:
+        if (tokenParmsIn[parameter] == None):
+            return {'status': 'error: Null ' + parameter +  ' value'}
         try: int(tokenParmsIn[parameter])
         except ValueError:
             return {'status': 'error: non-integer ' + parameter + ' value'}
@@ -15,5 +17,7 @@ def __validateTokenBoundaryAndType(tokenParmsIn):
     return tokenParmsIn
 
 def _place(parms):
+    if ('light' not in parms.keys()):
+        parms['light'] = 1
     result = __validateTokenBoundaryAndType(parms)
     return result

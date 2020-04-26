@@ -45,3 +45,11 @@ class Test(TestCase):
         self.actual = place(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test903_NullLight(self):
+        self.setUp()
+        self.parms['light'] = None
+        expected = 'error: Null light value'
+        self.actual = place(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
