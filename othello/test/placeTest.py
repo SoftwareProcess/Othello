@@ -27,5 +27,5 @@ class Test(TestCase):
         self.parms['light'] = '10'
         expected = 'error: above bound light value'
         self.actual = place(self.parms)
-        self.assertEqual(expected, self.actual['place'])
+        self.assertEqual(expected, self.actual['status'])
         self.tearDown()
