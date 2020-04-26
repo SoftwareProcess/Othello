@@ -7,6 +7,8 @@ def __validateTokenBoundaryAndType(tokenParmsIn):
     for parameter in ['light']:
         if (int(tokenParmsIn[parameter]) > 9):
             return {'status': 'error: above bound ' + parameter + ' value'} 
+        if (int(tokenParmsIn[parameter]) < 0):
+            return {'status': 'error: below bound ' + parameter + ' value'}
     return tokenParmsIn
 
 def _place(parms):
