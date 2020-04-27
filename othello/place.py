@@ -74,6 +74,7 @@ def __validateIntegrityParms(integrityParmsIn):
     if not re.match('^[a-zA-Z0-9]*$', integrityParmsIn.get('integrity')):
         return {'status': 'error: non hex characters'}
     return integrityParmsIn
+
 def __placeTokenOnBoard(allParm):
     locationList = allParm['location'].split(':')
     row = int(locationList[0])
