@@ -28,4 +28,6 @@ def _place(parms):
     if ('blank' not in parms.keys()):
         parms['blank'] = 0
     result = __validateTokenBoundaryAndType(parms)
+    if 'status' not in result:
+        result = __validateLocation(parms)
     return result
