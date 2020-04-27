@@ -44,7 +44,7 @@ class Test(TestCase):
         self.parms['blank'] = 0
         self.parms['location'] = '1:2'
         self.parms['board'] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,2,0,0,0,0,2,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-        self.parms['integrity'] = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
+        self.parms['integrity'] = '5ab81cb67067273363db989119448a0b878896f7db5c268a50c4ae3062cb3647'
         expected = {'board': [0,0,0,0,0,0,0,0,2,0,0,0,0,0,9,2,0,0,0,0,2,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                     'integrity': 'b3a9c918ec9e6beb9a9f0430f4e8373c247d0fa49a246936d721641749808aca',
                     'status': 'ok'}
