@@ -50,6 +50,8 @@ def __validateBoardParms(boardParmsIn):
 def __validateIntegrityParms(integrityParmsIn):
     if len(integrityParmsIn.get('integrity')) < 64:
         return {'status': 'error: short integrity'}
+    if len(integrityParmsIn.get('integrity')) > 64:
+        return {'status': 'error: long integrity'}
     
 def _place(parms):
     if ('light' not in parms.keys()):
