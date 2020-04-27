@@ -109,3 +109,11 @@ class Test(TestCase):
         self.actual = place(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test923_NullBlank(self):
+        self.setUp()
+        self.parms['blank'] = None
+        expected = 'error: Null blank value'
+        self.actual = place(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
