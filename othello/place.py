@@ -169,5 +169,6 @@ def _place(parms):
                 del result['dark']
                 del result['blank']
                 del result['location']
+                del result['originalBoard']
                 result.update({'status': 'ok'})
     return result
