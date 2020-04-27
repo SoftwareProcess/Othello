@@ -125,3 +125,11 @@ class Test(TestCase):
         self.actual = place(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+    
+    def test931_NonIntegerLocation(self):
+        self.setUp()
+        self.parms['location'] = 'A:B'
+        expected = 'error: non-integer location value'
+        self.actual = place(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()

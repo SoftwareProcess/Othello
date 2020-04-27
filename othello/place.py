@@ -20,6 +20,7 @@ def __validateLocation(locationParmsIn):
     if ':' not in locationParmsIn['location']:
         return {'status': 'error: invalid location separator'}
     
+    
 def _place(parms):
     if ('light' not in parms.keys()):
         parms['light'] = 1
