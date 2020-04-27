@@ -49,12 +49,15 @@ def __validateBoardParms(boardParmsIn):
         return {'status': 'error: uneven board'}
 
 def __validateIntegrityParms(integrityParmsIn):
+    if 'integrity' not in integrityParmsIn.keys():
+        return {'status': 'error: integrity does not exist'}
     if len(integrityParmsIn.get('integrity')) < 64:
         return {'status': 'error: short integrity'}
     if len(integrityParmsIn.get('integrity')) > 64:
         return {'status': 'error: long integrity'}
     if not re.match('^[a-zA-Z0-9]*$', integrityParmsIn.get('integrity')):
         return {'status': 'error: non hex characters'}
+
     
 def _place(parms):
     if ('light' not in parms.keys()):
