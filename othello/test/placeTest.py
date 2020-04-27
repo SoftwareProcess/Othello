@@ -46,7 +46,7 @@ class Test(TestCase):
         self.parms['board'] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,2,0,0,0,0,2,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         self.parms['integrity'] = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
         expected = {'board': [0,0,0,0,0,0,0,0,2,0,0,0,0,0,9,2,0,0,0,0,2,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                    'integrity': '76d9f467a385685ec30e6e188a450b14a24e7b3d269129549a0fc6fef2d4cb17',
+                    'integrity': 'b3a9c918ec9e6beb9a9f0430f4e8373c247d0fa49a246936d721641749808aca',
                     'status': 'ok'}
         self.actual = place(self.parms)
         self.assertEqual(expected, self.actual)
