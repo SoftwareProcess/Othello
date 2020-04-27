@@ -52,6 +52,21 @@ class Test(TestCase):
         self.assertEqual(expected, self.actual)
         self.tearDown()
         
+    def test021_LowLightBound(self):
+        self.setUp()
+        self.parms['light'] = 0
+        self.parms['dark'] = 2
+        self.parms['blank'] = 1
+        self.parms['location'] = '1:2'
+        self.parms['board'] = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,2,1,1,1,1,2,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        self.parms['integrity'] = '1b7e612b959852acbaf6b55d3f6b8dab2cdc32248a58a89dcf022ae80e5b36de'
+        expected = {'board': [1,1,1,1,1,1,1,1,2,1,1,1,1,1,0,2,1,1,1,1,2,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    'integrity': '8359a74bfa2e3052471b78230d8a5c3e0260ced88818dd956a9b1a3d8e53ae47',
+                    'status': 'ok'}
+        self.actual = place(self.parms)
+        self.assertEqual(expected, self.actual)
+        self.tearDown()
+        
     def test900_AboveBoundLight(self):
         self.setUp()
         self.parms['light'] = '10'
