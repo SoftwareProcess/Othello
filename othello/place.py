@@ -4,6 +4,8 @@
     @author:    Tae Myles
 '''
 import re
+import hashlib
+
 def __validateTokenBoundaryAndType(tokenParmsIn):
     for parameter in ['light', 'dark', 'blank']:
         if (tokenParmsIn[parameter] == None):
@@ -72,6 +74,75 @@ def __validateIntegrityParms(integrityParmsIn):
     if not re.match('^[a-zA-Z0-9]*$', integrityParmsIn.get('integrity')):
         return {'status': 'error: non hex characters'}
 
+def __placeTokenOnBoard(allParm):
+    locationList = allParm['location'].split(':')
+    row = int(locationList[0])
+    col = int(locationList[1])
+    boardList = allParm['board']
+    
+    # Initialize 2d array with current board element
+    twoDList =[boardList[i:i+6] for i in range(0, len(boardList), 6)]
+    
+    # Need to figure out who's turn it is
+    message = ''
+    for index in allParm['board']:
+        message = message + str(index)
+    
+    darkMessage = message + "/" + str(allParm['light']) + "/" + \
+        str(allParm['dark']) + "/" + str(allParm['blank']) + \
+        "/" + str(allParm['dark'])
+    darkSha256HexDigest = hashlib.sha256(darkMessage.encode('utf-8')).hexdigest()
+    
+    lightMessage = message + "/" + str(allParm['light']) + "/" + \
+        str(allParm['dark']) + "/" + str(allParm['blank']) + \
+        "/" + str(allParm['light'])
+    lightSha256HexDigest = hashlib.sha256(lightMessage.encode('utf-8')).hexdigest()
+    
+    if allParm['integrity'] == lightSha256HexDigest:
+        twoDList[row][col] = int(allParm['dark'])
+        # returning 2d to 1d list
+        return sum(twoDList, [])
+    
+    if allParm['integrity'] == darkSha256HexDigest:
+        twoDList[row][col] = int(allParm['light'])
+        # returning 2d to 1d list
+        return sum(twoDList, [])
+    
+def __calculateTurnIntegrity(integParm):
+    message = ''
+    for index in integParm['board']:
+        message = message + str(index)
+
+    darkMessage = message + "/" + str(integParm['light']) + "/" + \
+        str(integParm['dark']) + "/" + str(integParm['blank']) + \
+        "/" + str(integParm['dark'])
+    darkSha256HexDigest = hashlib.sha256(darkMessage.encode('utf-8')).hexdigest()
+    
+    lightMessage = message + "/" + str(integParm['light']) + "/" + \
+        str(integParm['dark']) + "/" + str(integParm['blank']) + \
+        "/" + str(integParm['light'])
+    lightSha256HexDigest = hashlib.sha256(lightMessage.encode('utf-8')).hexdigest()
+    
+    if integParm['integrity'] == lightSha256HexDigest:
+        darkMsg = ''
+        for index in integParm['board']:
+            darkMsg = darkMsg + str(index)
+        darkMessage = message + "/" + str(integParm['light']) + "/" + \
+        str(integParm['dark']) + "/" + str(integParm['blank']) + \
+        "/" + str(integParm['dark'])
+        darkSha256HexDigest = hashlib.sha256(darkMessage.encode('utf-8')).hexdigest()
+        return darkSha256HexDigest
+    if integParm['integrity'] == darkSha256HexDigest:
+        lightMsg = ''
+        for index in integParm['board']:
+            lightMsg = lightMsg + str(index)
+        lightMessage = lightMsg + "/" + str(integParm['light']) + "/" + \
+        str(integParm['dark']) + "/" + str(integParm['blank']) + \
+        "/" + str(integParm['light'])
+        lightSha256HexDigest = hashlib.sha256(lightMessage.encode('utf-8')).hexdigest()
+        return lightSha256HexDigest
+    else:
+        return {'status': 'invalid integrity'}
     
 def _place(parms):
     if ('light' not in parms.keys()):
@@ -87,4 +158,8 @@ def _place(parms):
             result = __validateBoardParms(parms)
             if 'status' not in result:
                 result = __validateIntegrityParms(parms)
+                if 'status'not in result:
+                    result['board'] = __placeTokenOnBoard(parms)
+                    
+                
     return result
