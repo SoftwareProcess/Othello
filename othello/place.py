@@ -15,6 +15,8 @@ def __validateTokenBoundaryAndType(tokenParmsIn):
             return {'status': 'error: above bound ' + parameter + ' value'} 
         if (int(tokenParmsIn[parameter]) < 0):
             return {'status': 'error: below bound ' + parameter + ' value'}
+    if (int(tokenParmsIn['light']) == int(tokenParmsIn['dark'])):
+        return {'status': 'error: light is equal to dark value'}
     if (int(tokenParmsIn['light']) == int(tokenParmsIn['blank'])):
         return {'status': 'error: blank is equal to light value'}
     if (int(tokenParmsIn['dark']) == int(tokenParmsIn['blank'])):
