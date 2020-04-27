@@ -162,7 +162,6 @@ def _place(parms):
         parms['dark'] = 2
     if ('blank' not in parms.keys()):
         parms['blank'] = 0
-    output = {'board': [], 'integrity':'', 'status': 'ok'}
     result = __validateTokenBoundaryAndType(parms)
     if 'status' not in result:
         result = __validateLocation(parms)
