@@ -37,7 +37,7 @@ def __validateLocation(locationParmsIn):
             
 def __validateBoardParms(boardParmsIn):
     boardCount = len(boardParmsIn['board'])
-    if boardCount != 36 or boardCount != 64 or boardCount != 144 or
+    if boardCount != 36 or boardCount != 64 or boardCount != 144 or\
     boardCount != 196 or boardCount != 256:
         return {'status': 'error: uneven board'}
     
