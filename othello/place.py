@@ -17,10 +17,18 @@ def __validateTokenBoundaryAndType(tokenParmsIn):
     return tokenParmsIn
    
 def __validateLocation(locationParmsIn):
+    locationList = locationParmsIn['location'].split(':')
     if ':' not in locationParmsIn['location']:
         return {'status': 'error: invalid location separator'}
-    
-    
+    # Check left of the separator
+    try: int(locationList[0])
+    except ValueError:
+        return {'error: non-integer location value'}
+    # Check right of the separator
+    try: int(locationList[1])
+    except ValueError:
+        return {'error: non-integer location value'}
+            
 def _place(parms):
     if ('light' not in parms.keys()):
         parms['light'] = 1
