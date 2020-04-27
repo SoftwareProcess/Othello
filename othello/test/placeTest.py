@@ -158,7 +158,7 @@ class Test(TestCase):
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
         
-    def test930_NonSquaredBoard(self):
+    def test930_NonSquareBoard(self):
         self.setUp()
         self.parms['light'] = 1
         self.parms['dark'] = 2
@@ -168,7 +168,6 @@ class Test(TestCase):
                                3,3,3,3,2,1,3,3,
                                3,3,3,3,3,3,3,3,
                                3,3,3]
-        self.parms['location'] = '3:2'
         expected = 'error: uneven board'
         self.actual = place(self.parms)
         self.assertEqual(expected, self.actual['status'])
