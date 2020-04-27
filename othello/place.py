@@ -51,6 +51,8 @@ def __validateBoardParms(boardParmsIn):
 def __validateIntegrityParms(integrityParmsIn):
     if 'integrity' not in integrityParmsIn.keys():
         return {'status': 'error: integrity does not exist'}
+    if integrityParmsIn.get('integrity') == None:
+        return {'status': 'error: null integrity'}
     if len(integrityParmsIn.get('integrity')) < 64:
         return {'status': 'error: short integrity'}
     if len(integrityParmsIn.get('integrity')) > 64:
