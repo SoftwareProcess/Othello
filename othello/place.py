@@ -23,11 +23,11 @@ def __validateLocation(locationParmsIn):
     # Check left of the separator
     try: int(locationList[0])
     except ValueError:
-        return {'error: non-integer location value'}
+        return {'status': 'error: non-integer location value'}
     # Check right of the separator
     try: int(locationList[1])
     except ValueError:
-        return {'error: non-integer location value'}
+        return {'status': 'error: non-integer location value'}
             
 def _place(parms):
     if ('light' not in parms.keys()):
