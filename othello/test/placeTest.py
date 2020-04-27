@@ -101,3 +101,11 @@ class Test(TestCase):
         self.actual = place(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test922_NonIntegerBlank(self):
+        self.setUp()
+        self.parms['blank'] = '1E5'
+        expected = 'error: non-integer blank value'
+        self.actual = place(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
