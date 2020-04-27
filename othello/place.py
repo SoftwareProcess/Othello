@@ -20,7 +20,7 @@ def __validateLocation(locationParmsIn):
     locationList = locationParmsIn['location'].split(':')
     if ':' not in locationParmsIn['location']:
         return {'status': 'error: invalid location separator'}
-    if len(locationList) != 2:
+    if locationList[0] == '' or locationList[1] == '':
         return {'status': 'error: missing a value on one side of separator'}
     # Check left of the separator
     try: int(locationList[0])
