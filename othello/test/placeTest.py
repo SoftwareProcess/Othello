@@ -158,7 +158,7 @@ class Test(TestCase):
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
         
-    def test930_NonSquareBoard(self):
+    def test940_NonSquareBoard(self):
         self.setUp()
         self.parms['light'] = 1
         self.parms['dark'] = 2
