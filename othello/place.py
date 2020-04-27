@@ -52,5 +52,5 @@ def _place(parms):
     if 'status' not in result:
         result = __validateLocation(parms)
         if 'status' not in result:
-            result = __validateLocation(parms)
+            result = __validateBoardParms(parms)
     return result
