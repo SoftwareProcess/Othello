@@ -3,6 +3,7 @@
     
     @author:    Tae Myles
 '''
+import re
 def __validateTokenBoundaryAndType(tokenParmsIn):
     for parameter in ['light', 'dark', 'blank']:
         if (tokenParmsIn[parameter] == None):
@@ -52,6 +53,8 @@ def __validateIntegrityParms(integrityParmsIn):
         return {'status': 'error: short integrity'}
     if len(integrityParmsIn.get('integrity')) > 64:
         return {'status': 'error: long integrity'}
+    if not re.match('^[a-zA-Z0-9]*$', integrityParmsIn.get('integrity')):
+        return {'status': 'error: non hex characters'}
     
 def _place(parms):
     if ('light' not in parms.keys()):
