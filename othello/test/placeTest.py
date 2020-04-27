@@ -43,7 +43,7 @@ class Test(TestCase):
         self.parms['dark'] = 2
         self.parms['blank'] = 0
         self.parms['location'] = '1:2'
-        self.parms['board'] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        self.parms['board'] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,9,2,0,0,0,0,2,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         self.parms['integrity'] = '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
         expected = {'board': [0,0,0,0,0,0,0,0,2,0,0,0,0,0,9,2,0,0,0,0,2,9,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
                     'integrity': '76d9f467a385685ec30e6e188a450b14a24e7b3d269129549a0fc6fef2d4cb17',
