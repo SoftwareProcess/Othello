@@ -73,7 +73,7 @@ def __validateIntegrityParms(integrityParmsIn):
         return {'status': 'error: long integrity'}
     if not re.match('^[a-zA-Z0-9]*$', integrityParmsIn.get('integrity')):
         return {'status': 'error: non hex characters'}
-
+    return integrityParmsIn
 def __placeTokenOnBoard(allParm):
     locationList = allParm['location'].split(':')
     row = int(locationList[0])
@@ -99,18 +99,18 @@ def __placeTokenOnBoard(allParm):
     lightSha256HexDigest = hashlib.sha256(lightMessage.encode('utf-8')).hexdigest()
     
     if allParm['integrity'] == lightSha256HexDigest:
-        twoDList[row][col] = int(allParm['dark'])
+        twoDList[row][col] = int(allParm['light'])
         # returning 2d to 1d list
         return sum(twoDList, [])
     
     if allParm['integrity'] == darkSha256HexDigest:
-        twoDList[row][col] = int(allParm['light'])
+        twoDList[row][col] = int(allParm['dark'])
         # returning 2d to 1d list
         return sum(twoDList, [])
     
 def __calculateTurnIntegrity(integParm):
     message = ''
-    for index in integParm['board']:
+    for index in integParm['originalBoard']:
         message = message + str(index)
 
     darkMessage = message + "/" + str(integParm['light']) + "/" + \
@@ -127,7 +127,7 @@ def __calculateTurnIntegrity(integParm):
         darkMsg = ''
         for index in integParm['board']:
             darkMsg = darkMsg + str(index)
-        darkMessage = message + "/" + str(integParm['light']) + "/" + \
+        darkMessage = darkMsg + "/" + str(integParm['light']) + "/" + \
         str(integParm['dark']) + "/" + str(integParm['blank']) + \
         "/" + str(integParm['dark'])
         darkSha256HexDigest = hashlib.sha256(darkMessage.encode('utf-8')).hexdigest()
@@ -141,8 +141,7 @@ def __calculateTurnIntegrity(integParm):
         "/" + str(integParm['light'])
         lightSha256HexDigest = hashlib.sha256(lightMessage.encode('utf-8')).hexdigest()
         return lightSha256HexDigest
-    else:
-        return {'status': 'invalid integrity'}
+    return {'status': 'invalid integrity'}
     
 def _place(parms):
     if ('light' not in parms.keys()):
@@ -151,6 +150,7 @@ def _place(parms):
         parms['dark'] = 2
     if ('blank' not in parms.keys()):
         parms['blank'] = 0
+    output = {'board': [], 'integrity':'', 'status': 'ok'}
     result = __validateTokenBoundaryAndType(parms)
     if 'status' not in result:
         result = __validateLocation(parms)
@@ -158,8 +158,16 @@ def _place(parms):
             result = __validateBoardParms(parms)
             if 'status' not in result:
                 result = __validateIntegrityParms(parms)
-                if 'status'not in result:
-                    result['board'] = __placeTokenOnBoard(parms)
-                    
-                
+                if 'status' in result:
+                    return result
+                origBoard = result['board']
+                result.update({'originalBoard': origBoard})
+                result['board'] = __placeTokenOnBoard(parms)
+                result['integrity'] = __calculateTurnIntegrity(parms)
+                del result['op']
+                del result['light']
+                del result['dark']
+                del result['blank']
+                del result['location']
+                result.update({'status': 'ok'})
     return result
