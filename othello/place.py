@@ -44,6 +44,11 @@ def __validateBoardParms(boardParmsIn):
     boardCount = len(boardParmsIn['board'])
     if boardCount != 36 or boardCount != 64 or boardCount != 144 or boardCount != 196 or boardCount != 256:
         return {'status': 'error: uneven board'}
+    return boardParmsIn
+
+def __validateIntegrityParms(integrityParmsIn):
+    if len(integrityParmsIn.get('integrity')) < 64:
+        return {'status': 'error: short integrity'}
     
 def _place(parms):
     if ('light' not in parms.keys()):
@@ -57,4 +62,6 @@ def _place(parms):
         result = __validateLocation(parms)
         if 'status' not in result:
             result = __validateBoardParms(parms)
+            if 'status' not in result:
+                result = __validateIntegrityParms(parms)
     return result
