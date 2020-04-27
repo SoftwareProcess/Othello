@@ -50,6 +50,7 @@ def _place(parms):
     result = __validateTokenBoundaryAndType(parms)
     if 'status' not in result:
         result = __validateLocation(parms)
+        print (result)
         if 'status' not in result:
             result = __validateBoardParms(parms)
     return result

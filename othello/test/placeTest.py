@@ -168,6 +168,7 @@ class Test(TestCase):
                                3,3,3,3,2,1,3,3,
                                3,3,3,3,3,3,3,3,
                                3,3,3]
+        self.parms['location'] = '3:2'
         expected = 'error: uneven board'
         self.actual = place(self.parms)
         self.assertEqual(expected, self.actual['status'])
