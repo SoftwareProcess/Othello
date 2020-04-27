@@ -4,7 +4,7 @@
     @author:    Tae Myles
 '''
 def __validateTokenBoundaryAndType(tokenParmsIn):
-    for parameter in ['light', 'dark']:
+    for parameter in ['light', 'dark', 'blank']:
         if (tokenParmsIn[parameter] == None):
             return {'status': 'error: Null ' + parameter +  ' value'}
         try: int(tokenParmsIn[parameter])
