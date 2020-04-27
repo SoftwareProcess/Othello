@@ -97,7 +97,7 @@ class Test(TestCase):
         self.assertEqual(expected, self.actual)
         self.tearDown()
         
-    def test030_HigDarkBound(self):
+    def test031_HigDarkBound(self):
         self.setUp()
         self.parms['light'] = 1
         self.parms['dark'] = 9
