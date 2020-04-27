@@ -201,3 +201,14 @@ class Test(TestCase):
         self.actual = place(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test943_NullBoard(self):
+        self.setUp()
+        self.parms['light'] = 1
+        self.parms['dark'] = 2
+        self.parms['blank'] = 3
+        self.parms['board'] = None
+        expected = 'error: null board'
+        self.actual = place(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown() 
