@@ -56,7 +56,7 @@ def __validateBoardParms(boardParmsIn):
     for value in boardParmsIn.get('board'):
         if value in tokenList != None and not checkBoardAndTokenList:
                 return {'status': 'error: incorrect board value'}
-    if boardCount == 36 or boardCount == 64 or boardCount == 144 or boardCount == 196 or boardCount == 256:
+    if boardCount == 36 or boardCount == 64 or boardCount == 100 or boardCount == 144 or boardCount == 196 or boardCount == 256:
         return boardParmsIn
     else:
         return {'status': 'error: uneven board'}
@@ -79,10 +79,20 @@ def __placeTokenOnBoard(allParm):
     row = int(locationList[0])
     col = int(locationList[1])
     boardList = allParm['board']
-    
+    boardCount = len(allParm['board'])
     # Initialize 2d array with current board element
-    twoDList =[boardList[i:i+6] for i in range(0, len(boardList), 6)]
-    
+    if boardCount == 36:
+        twoDList =[boardList[i:i+6] for i in range(0, len(boardList), 6)]
+    if boardCount == 64:
+        twoDList =[boardList[i:i+8] for i in range(0, len(boardList), 8)]
+    if boardCount == 100:
+        twoDList =[boardList[i:i+10] for i in range(0, len(boardList), 10)]
+    if boardCount == 144:
+        twoDList =[boardList[i:i+12] for i in range(0, len(boardList), 12)]
+    if boardCount == 196:
+        twoDList =[boardList[i:i+14] for i in range(0, len(boardList), 14)]
+    if boardCount == 256:
+        twoDList =[boardList[i:i+16] for i in range(0, len(boardList), 16)]
     # Need to figure out who's turn it is
     message = ''
     for index in allParm['board']:
