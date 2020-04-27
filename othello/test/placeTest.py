@@ -141,3 +141,11 @@ class Test(TestCase):
         self.actual = place(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test933_MissingLocation(self):
+        self.setUp()
+        del self.parms['location']
+        expected = 'error: missing location'
+        self.actual = place(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
