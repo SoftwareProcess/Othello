@@ -15,7 +15,7 @@ def __validateTokenBoundaryAndType(tokenParmsIn):
         if (int(tokenParmsIn[parameter]) < 0):
             return {'status': 'error: below bound ' + parameter + ' value'}
     return tokenParmsIn
-
+   
 def _place(parms):
     if ('light' not in parms.keys()):
         parms['light'] = 1

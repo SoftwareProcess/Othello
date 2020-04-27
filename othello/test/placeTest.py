@@ -117,3 +117,11 @@ class Test(TestCase):
         self.actual = place(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test930_invalidLocationSeparator(self):
+        self.setUp()
+        self.parms['location'] = '3&4'
+        expected = 'error: invalid location separator'
+        self.actual = place(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
