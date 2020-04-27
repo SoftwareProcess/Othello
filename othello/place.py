@@ -21,5 +21,7 @@ def _place(parms):
         parms['light'] = 1
     if ('dark' not in parms.keys()):
         parms['dark'] = 2
+    if ('blank' not in parms.keys()):
+        parms['blank'] = 0
     result = __validateTokenBoundaryAndType(parms)
     return result
