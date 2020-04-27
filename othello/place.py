@@ -17,7 +17,7 @@ def __validateTokenBoundaryAndType(tokenParmsIn):
     return tokenParmsIn
    
 def __validateLocation(locationParmsIn):
-    if 'location' not in locationParmsIn.keys()
+    if 'location' not in locationParmsIn.keys():
         return {'status': 'error: missing location'}
     locationList = locationParmsIn['location'].split(':')
     if ':' not in locationParmsIn['location']:
