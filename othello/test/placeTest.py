@@ -245,6 +245,21 @@ class Test(TestCase):
         self.actual = place(self.parms)
         self.assertEqual(expected, self.actual)
         self.tearDown()
+
+    def test070_statusIsEnd(self):
+        self.setUp()
+        self.parms['light'] = 1
+        self.parms['dark'] = 2
+        self.parms['blank'] = 0
+        self.parms['location'] = '5:5'
+        self.parms['board'] = [2,2,2,2,2,2,1,1,1,2,2,2,1,1,1,2,2,2,1,1,2,1,2,2,2,2,2,2,2,1,2,2,2,2,2,2]
+        self.parms['integrity'] = '048c4fd127663a65dfe9eb19b5967fff3d9be5f634aa546ee9fbde711b1d1d39'
+        expected = {'board': [2,2,2,2,2,2,1,1,1,2,2,2,1,1,1,2,2,2,1,1,2,1,2,2,2,2,2,2,2,1,2,2,2,2,2,2],
+                    'integrity': 'fc68bb40db77b7e3c42850f225ec1e3a1c4b03e8722e7398447c99c40015fbaf',
+                    'status': 'ok'}
+        self.actual = place(self.parms)
+        self.assertEqual(expected, self.actual)
+        self.tearDown()
         
     def test900_AboveBoundLight(self):
         self.setUp()
