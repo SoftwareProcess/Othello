@@ -39,7 +39,7 @@ class Test(TestCase):
 
     def test020_HighLightBound(self):
         self.setUp()
-        self.parms['light'] = 1
+        self.parms['light'] = 9
         self.parms['dark'] = 2
         self.parms['blank'] = 0
         self.parms['location'] = '1:2'
