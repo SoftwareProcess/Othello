@@ -143,6 +143,7 @@ def __calculateTurnIntegrity(integParm):
         "/" + str(integParm['dark'])
         darkSha256HexDigest = hashlib.sha256(darkMessage.encode('utf-8')).hexdigest()
         return darkSha256HexDigest
+    
     if integParm['integrity'] == darkSha256HexDigest:
         lightMsg = ''
         for index in integParm['board']:
