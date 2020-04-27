@@ -228,3 +228,11 @@ class Test(TestCase):
         self.actual = place(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test952_NonHexIntegrity(self):
+        self.setUp()
+        self.parms['integrity'] = 'f01977c17f801c43eeb13fb9f74a49bd0c761db3cdffe01510f47ddd23ab465$'
+        expected = 'error: non hex characters'
+        self.actual = place(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
