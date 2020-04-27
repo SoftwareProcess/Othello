@@ -53,6 +53,11 @@ def __validateBoardParms(boardParmsIn):
         return boardParmsIn
     else:
         return {'status': 'error: uneven board'}
+    tokenList = [int(boardParmsIn['light']), int(boardParmsIn['dark']), int(boardParmsIn['blank'])]
+    checkBoardAndTokenList = all(index in tokenList for index in boardParmsIn.get('board'))
+    for value in boardParmsIn.get('board'):
+        if value in tokenList != None and not checkBoardAndTokenList:
+                return {'status': 'error: incorrect board value'}
 
 def __validateIntegrityParms(integrityParmsIn):
     if 'integrity' not in integrityParmsIn.keys():
