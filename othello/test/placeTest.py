@@ -230,6 +230,22 @@ class Test(TestCase):
         self.actual = place(self.parms)
         self.assertEqual(expected, self.actual)
         self.tearDown()
+        
+    def test061_LightNextPlayer(self):
+        self.setUp()
+        self.parms['light'] = 1
+        self.parms['dark'] = 2
+        self.parms['blank'] = 0
+        self.parms['location'] = '1:3'
+        self.parms['board'] = [0,0,0,0,0,0,0,0,2,0,0,0,0,0,2,2,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        self.parms['integrity'] = '3d35e1b27adc351e6c83fa799294426e485e581ca354e695c07e6daba507e2ab'
+        expected = {'board': [0,0,0,0,0,0,0,0,2,0,0,0,0,0,2,2,0,0,0,1,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                    'integrity': '9148583b418e763e1e4eaa7105ee9c49536a0321e618164de3368ddc32efaf50',
+                    'status': 'ok'}
+        self.actual = place(self.parms)
+        self.assertEqual(expected, self.actual)
+        self.tearDown()
+        
     def test900_AboveBoundLight(self):
         self.setUp()
         self.parms['light'] = '10'
