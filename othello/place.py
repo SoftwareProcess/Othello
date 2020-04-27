@@ -35,6 +35,12 @@ def __validateLocation(locationParmsIn):
     except ValueError:
         return {'status': 'error: non-integer location value'}
             
+def __validateBoardParms(boardParmsIn):
+    boardCount = len(boardParmsIn['board'])
+    if boardCount != 36 or boardCount != 64 or boardCount != 144 or
+    boardCount != 196 or boardCount != 256:
+        return {'status': 'error: uneven board'}
+    
 def _place(parms):
     if ('light' not in parms.keys()):
         parms['light'] = 1
@@ -45,4 +51,6 @@ def _place(parms):
     result = __validateTokenBoundaryAndType(parms)
     if 'status' not in result:
         result = __validateLocation(parms)
+        if 'status' not in result:
+            result = __validateLocation(parms)
     return result
