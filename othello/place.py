@@ -50,7 +50,9 @@ def __validateBoardParms(boardParmsIn):
         return {'status': 'error: board does not exist'}
     if boardParmsIn.get('board') == None:
         return {'status': 'error: null board'}
+    
     boardCount = len(boardParmsIn['board'])
+    
     tokenList = [int(boardParmsIn['light']), int(boardParmsIn['dark']), int(boardParmsIn['blank'])]
     checkBoardAndTokenList = all(index in tokenList for index in boardParmsIn.get('board'))
     for value in boardParmsIn.get('board'):
@@ -76,6 +78,7 @@ def __validateIntegrityParms(integrityParmsIn):
     return integrityParmsIn
 
 def __placeTokenOnBoard(allParm):
+    # splitting location separator
     locationList = allParm['location'].split(':')
     row = int(locationList[0])
     col = int(locationList[1])

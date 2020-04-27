@@ -6,7 +6,6 @@
 from unittest import TestCase
 from othello.place import _place as place
 
-
 class Test(TestCase):
     def setUp(self):
         self.parms = {'op': 'place', 'light': '1', 'dark': '2', 'blank': '0', 'location': '1:1',
@@ -21,7 +20,7 @@ class Test(TestCase):
                       'integrity': '6c3ec0129f5e128f48e2541bd6663a52a825c35f99b9a69d9593f2fc44b0bb4b'
                       }
 
-
+    #happy path
     def test010_AllNominal(self):
         self.setUp()
         self.parms['light'] = 1
@@ -276,6 +275,7 @@ class Test(TestCase):
         self.assertEqual(expected, self.actual)
         self.tearDown()
         
+        #Sad path
     def test900_AboveBoundLight(self):
         self.setUp()
         self.parms['light'] = '10'
