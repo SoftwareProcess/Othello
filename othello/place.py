@@ -20,6 +20,8 @@ def __validateLocation(locationParmsIn):
     locationList = locationParmsIn['location'].split(':')
     if ':' not in locationParmsIn['location']:
         return {'status': 'error: invalid location separator'}
+    if len(locationList) != 2:
+        return {'status': 'error: missing a value on one side of separator'}
     # Check left of the separator
     try: int(locationList[0])
     except ValueError:
@@ -28,8 +30,6 @@ def __validateLocation(locationParmsIn):
     try: int(locationList[1])
     except ValueError:
         return {'status': 'error: non-integer location value'}
-    if len(locationList) != 2:
-        return {'status': 'error: missing a value on one side of separator'}
             
 def _place(parms):
     if ('light' not in parms.keys()):
