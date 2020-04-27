@@ -244,3 +244,11 @@ class Test(TestCase):
         self.actual = place(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test954_NullIntegrity(self):
+        self.setUp()
+        self.parms['integrity'] = None
+        expected = 'error: null integrity'
+        self.actual = place(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
