@@ -17,9 +17,10 @@ def __validateTokenBoundaryAndType(tokenParmsIn):
     return tokenParmsIn
    
 def __validateLocation(locationParmsIn):
-    locationList = locationParmsIn['location'].split(':')
-    if 'location' not in locationParmsIn:
+    try: locationParmsIn.get('location')
+    except KeyError:
         return {'status': 'error: missing location'}
+    locationList = locationParmsIn['location'].split(':')
     if ':' not in locationParmsIn['location']:
         return {'status': 'error: invalid location separator'}
     if locationList[0] == '' or locationList[1] == '':
