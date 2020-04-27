@@ -149,3 +149,11 @@ class Test(TestCase):
         self.actual = place(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test934_NullLocation(self):
+        self.setUp()
+        self.parms['location'] = None
+        expected = 'error: Null location'
+        self.actual = place(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
