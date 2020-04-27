@@ -198,6 +198,6 @@ class Test(TestCase):
         self.parms['blank'] = 3
         del self.parms['board']
         expected = 'error: board does not exist'
-        self.actual = status(self.parms)
+        self.actual = place(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()

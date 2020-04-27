@@ -37,6 +37,8 @@ def __validateLocation(locationParmsIn):
     return locationParmsIn
  
 def __validateBoardParms(boardParmsIn):
+    if 'board' not in boardParmsIn.keys():
+        return {'status': 'error: board does not exist'}
     boardCount = len(boardParmsIn['board'])
     if boardCount != 36 or boardCount != 64 or boardCount != 144 or boardCount != 196 or boardCount != 256:
         return {'status': 'error: uneven board'}
