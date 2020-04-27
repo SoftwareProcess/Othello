@@ -133,3 +133,11 @@ class Test(TestCase):
         self.actual = place(self.parms)
         self.assertEqual(expected, self.actual['status'])
         self.tearDown()
+        
+    def test932_MissingValueOnOneSideOfSeparator(self):
+        self.setUp()
+        self.parms['location'] = '2:'
+        expected = 'error: missing a value on one side of separator'
+        self.actual = place(self.parms)
+        self.assertEqual(expected, self.actual['status'])
+        self.tearDown()
