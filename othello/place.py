@@ -42,9 +42,10 @@ def __validateBoardParms(boardParmsIn):
     if boardParmsIn.get('board') == None:
         return {'status': 'error: null board'}
     boardCount = len(boardParmsIn['board'])
-    if boardCount != 36 or boardCount != 64 or boardCount != 144 or boardCount != 196 or boardCount != 256:
+    if boardCount == 36 or boardCount == 64 or boardCount == 144 or boardCount == 196 or boardCount == 256:
+        return boardParmsIn
+    else:
         return {'status': 'error: uneven board'}
-    return boardParmsIn
 
 def __validateIntegrityParms(integrityParmsIn):
     if len(integrityParmsIn.get('integrity')) < 64:
